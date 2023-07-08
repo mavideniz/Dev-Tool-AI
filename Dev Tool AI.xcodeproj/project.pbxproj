@@ -27,6 +27,8 @@
 		74E2A9922A595FCF00129AC8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9912A595FCF00129AC8 /* Message.swift */; };
 		74E2A9962A597BB400129AC8 /* ColorSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9952A597BB400129AC8 /* ColorSuggestionViewModel.swift */; };
 		74E2A9982A59BB0C00129AC8 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9972A59BB0C00129AC8 /* LanguageManager.swift */; };
+		74E2A99C2A59C08900129AC8 /* AutoCommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A99B2A59C08900129AC8 /* AutoCommitView.swift */; };
+		74E2A99E2A59C0F900129AC8 /* ManuelCommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A99D2A59C0F900129AC8 /* ManuelCommitView.swift */; };
 		C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA2D2A595C990051443C /* Color+HexColor.swift */; };
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
@@ -56,6 +58,8 @@
 		74E2A9912A595FCF00129AC8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		74E2A9952A597BB400129AC8 /* ColorSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSuggestionViewModel.swift; sourceTree = "<group>"; };
 		74E2A9972A59BB0C00129AC8 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		74E2A99B2A59C08900129AC8 /* AutoCommitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCommitView.swift; sourceTree = "<group>"; };
+		74E2A99D2A59C0F900129AC8 /* ManuelCommitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuelCommitView.swift; sourceTree = "<group>"; };
 		C227BA2D2A595C990051443C /* Color+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexColor.swift"; sourceTree = "<group>"; };
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 			children = (
 				66BFE65E2A5945A40052958F /* CommitView.swift */,
 				74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */,
+				74E2A99B2A59C08900129AC8 /* AutoCommitView.swift */,
+				74E2A99D2A59C0F900129AC8 /* ManuelCommitView.swift */,
 			);
 			path = Commit;
 			sourceTree = "<group>";
@@ -349,6 +355,8 @@
 				66BFE6612A5945AC0052958F /* MainView.swift in Sources */,
 				C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */,
 				66BFE6512A5945670052958F /* Color+Extension.swift in Sources */,
+				74E2A99C2A59C08900129AC8 /* AutoCommitView.swift in Sources */,
+				74E2A99E2A59C0F900129AC8 /* ManuelCommitView.swift in Sources */,
 				C227BA382A59AA3D0051443C /* GitHubStatusManager.swift in Sources */,
 				74E2A9922A595FCF00129AC8 /* Message.swift in Sources */,
 				66BFE66C2A5978C30052958F /* DebugSolutionViewModel.swift in Sources */,
@@ -486,7 +494,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -39,15 +39,12 @@ struct ColorSuggestionView: View {
                 }
 
                 VStack(spacing: 10) {
-                    
-
                     if self.viewModel.shouldShowError {
                         Text("No colors found. Try another keyword.")
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
                     }
                     ZStack {
-                        
                         TextField("Write your keyword", text: $keywordText)
                             .font(.system(size: 16))
                             .frame(width: 350)
@@ -97,18 +94,6 @@ struct ColorSuggestionView: View {
                                     shouldShowSuccessView = true
                                     CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
                                 }
-
-                                Text("\(viewModel.colorResponses[index].name)")
-                                    .minimumScaleFactor(0.01)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 13, weight: .bold))
-                                    .multilineTextAlignment(.center)
-                                    .padding(.top, 7)
-
-                                Text("\(viewModel.colorResponses[index].hexColor)")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 12))
-                                    .multilineTextAlignment(.center)
                             }.frame(height: 150)
                                 .padding(5)
                                 .padding(.bottom, 7)

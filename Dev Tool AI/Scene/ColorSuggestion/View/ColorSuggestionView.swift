@@ -27,10 +27,6 @@ struct ColorSuggestionView: View {
                     .font(.custom(FontConstants.titleFont, size: 16))
                     .foregroundColor(.white.opacity(0.6))
 
-                if self.viewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                }
 
                 if self.viewModel.shouldShowError {
                     Text("No colors found. Try another keyword.")

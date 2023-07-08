@@ -39,7 +39,7 @@ class ChatAppViewModel: ObservableObject {
 
     init() {
         let initialPrompt = """
-            You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made.
+            As a act senior software developer,
             """
         
         // TODO: Debug -- I'm encountering an error in my code in swift. Can you please help me troubleshoot and find a solution? Here's the error message I'm getting:

@@ -12,6 +12,8 @@ struct DebugSolutionView: View {
     @State private var isTextFieldEmpty = false
     @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject var languageManager: LanguageManager
 
     var body: some View {
         ZStack {
@@ -61,7 +63,7 @@ struct DebugSolutionView: View {
                                 isTextFieldEmpty = true
                             }
                         } else {
-                            viewModel.sendMessage()
+                            viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
                                 isLoading = true
@@ -79,7 +81,7 @@ struct DebugSolutionView: View {
                                 isTextFieldEmpty = true
                             }
                         } else {
-                            viewModel.sendMessage()
+                            viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
                                 isLoading = true

@@ -77,6 +77,7 @@ struct CommitView: View {
                             }
                         } else {
                             viewModel.sendMessage()
+                            print(UserDefaults.standard.string(forKey: "output"))
                             withAnimation {
                                 isTextFieldEmpty = false
                                 isLoading = true
@@ -92,6 +93,10 @@ struct CommitView: View {
                     }
                 }
                     .padding()
+            }
+            .onAppear(){
+                print(UserDefaults.standard.string(forKey: "output"))
+                print(UserDefaults.standard.string(forKey: "prefix"))
             }
                 .cornerRadius(16)
                 .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)

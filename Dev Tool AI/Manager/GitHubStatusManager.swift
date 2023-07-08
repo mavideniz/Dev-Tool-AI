@@ -8,14 +8,12 @@
 import SwiftUI
 
 class GitHubStatusManager: ObservableObject {
-//    @Published var messages: [Message] = []
-//    @Published var changedFilesNames: [String] = []
 
     @Published var commitSummary: String = ""
-
     private let openAIService = OpenAiService()
-    
     @AppStorage("directory") var directory: String = ""
+
+    @Published var isLoading: Bool = false
 
     func getFiles() -> [String]? {
         let task = Process()
@@ -78,6 +76,7 @@ class GitHubStatusManager: ObservableObject {
     }
 
     func sendMessage() {
+        self.isLoading = true
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
@@ -88,12 +87,14 @@ class GitHubStatusManager: ObservableObject {
         Task {
             let response = await openAIService.sendMessage(messages: [newMessage])
             guard let receivedOpenAIMessage = response?.choices.first?.message else {
+                self.isLoading = false
                 return
             }
             let receivedMessage = Message(id: UUID(), role: .system, content: receivedOpenAIMessage.content, createAt: Date())
 
             await MainActor.run {
                 self.commitSummary = receivedMessage.content
+                self.isLoading = false
             }
         }
     }

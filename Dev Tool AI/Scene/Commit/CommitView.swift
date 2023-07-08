@@ -21,7 +21,6 @@ struct CommitView: View {
                 } else {
                     ManuelCommitView()
                 }
-
             }
             VStack {
                 Toggle(isOn: $isToggleOn) {

@@ -1,13 +1,13 @@
 //
-//  CommitViewModel.swift
+//  ChatAppViewModel.swift
 //  Dev Tool AI
 //
-//  Created by Mehmet Ali Demir on 8.07.2023.
+//  Created by Doğancan Mavideniz on 8.07.2023.
 //
 
 import Foundation
 
-class CommitViewModel: ObservableObject {
+class ChatAppViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var currentInput: String = ""
     private let openAIService = OpenAiService()
@@ -39,14 +39,10 @@ class CommitViewModel: ObservableObject {
 
     init() {
         let initialPrompt = """
-            You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. Put an appropriate prefix like [bug-fix], [feature] at the beginning of the commit message. In Turkish.
+            You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made.
             """
-        // Put an appropriate emoji at the beginning of the commit message.
-        // Put an appropriate prefix like [bug-fix], [feature] at the beginning of the commit message.
         
-        // In Turkish
-        // In Arabic
-        // In English
+        // TODO: Debug -- I'm encountering an error in my code in swift. Can you please help me troubleshoot and find a solution? Here's the error message I'm getting:
         let systemMessage = Message(id: UUID(), role: .system, content: initialPrompt, createAt: Date())
         messages.append(systemMessage)
     }

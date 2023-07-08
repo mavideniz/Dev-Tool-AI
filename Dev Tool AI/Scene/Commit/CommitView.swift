@@ -16,11 +16,9 @@ struct CommitView: View {
 
     var body: some View {
         VStack {
-            VStack(spacing: 20) {
 
-                Text("👨🏻‍💻 AI Commit")
-                    .font(.custom("Futura-CondensedExtraBold", size: 20))
-            }
+            Text("AI Commit")
+                .font(.custom("Futura-CondensedExtraBold", size: 16))
             ScrollView {
                 ScrollViewReader { scrollViewProxy in
                     LazyVStack(spacing: 8) {
@@ -46,13 +44,8 @@ struct CommitView: View {
                         .padding()
                 }
 
-                TextField("Enter Commit", text: $viewModel.currentInput)
-                    .cornerRadius(8)
-                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-                    .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(isTextFieldEmpty ? Color.red : Color.gray.opacity(0.8), lineWidth: 1)
-                )
+                TextField("Mesajınızı yazın", text: $viewModel.currentInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
 
                 Button(action: {
                     if viewModel.currentInput.isEmpty {

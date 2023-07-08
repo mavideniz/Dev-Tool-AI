@@ -24,6 +24,7 @@
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
 		66BFE6662A595BFB0052958F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6652A595BFB0052958F /* Constants.swift */; };
+		66BFE6682A5962B10052958F /* ChatAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6672A5962B10052958F /* ChatAppViewModel.swift */; };
 		74E2A9902A595FAB00129AC8 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */; };
 		74E2A9922A595FCF00129AC8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9912A595FCF00129AC8 /* Message.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
 		66BFE6652A595BFB0052958F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		66BFE6672A5962B10052958F /* ChatAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppViewModel.swift; sourceTree = "<group>"; };
 		74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
 		74E2A9912A595FCF00129AC8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				66BFE6552A5945820052958F /* ChatAppView.swift */,
+				66BFE6672A5962B10052958F /* ChatAppViewModel.swift */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66BFE6682A5962B10052958F /* ChatAppViewModel.swift in Sources */,
 				66BFE65B2A5945950052958F /* DebugSolutionView.swift in Sources */,
 				C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */,
 				74E2A9902A595FAB00129AC8 /* CommitViewModel.swift in Sources */,
@@ -438,7 +442,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = BZ727874J5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -466,7 +470,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = BZ727874J5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

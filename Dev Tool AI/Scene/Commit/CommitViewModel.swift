@@ -11,8 +11,11 @@ class CommitViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var currentInput: String = ""
     private let openAIService = OpenAiService()
+    
+    @Published var isLoading: Bool = false
 
     func sendMessage(prefix: String, output: String) {
+        isLoading = true
         self.messages.removeAll()
         
         let initialPrompt = """
@@ -34,6 +37,7 @@ class CommitViewModel: ObservableObject {
                 await MainActor.run {
                     messages.append(dummyMessage)
                 }
+                isLoading = false
                 return
             }
 
@@ -41,6 +45,7 @@ class CommitViewModel: ObservableObject {
 
             await MainActor.run {
                 messages.append(receivedMessage)
+                isLoading = false
             }
         }
     }

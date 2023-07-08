@@ -10,7 +10,6 @@ import Alamofire
 struct DebugSolutionView: View {
     @StateObject private var viewModel = DebugSolutionViewModel()
     @State private var isTextFieldEmpty = false
-    @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -42,7 +41,7 @@ struct DebugSolutionView: View {
                 }
 
                 HStack {
-                    if isLoading {
+                    if viewModel.isLoading {
                         ProgressView()
                             .controlSize(.small)
                             .padding(.trailing, 4)
@@ -64,11 +63,7 @@ struct DebugSolutionView: View {
                             viewModel.sendMessage()
                             withAnimation {
                                 isTextFieldEmpty = false
-                                isLoading = true
-                            }
-
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                isLoading = false
+                                viewModel.isLoading = true
                             }
                         }
                     }
@@ -82,11 +77,7 @@ struct DebugSolutionView: View {
                             viewModel.sendMessage()
                             withAnimation {
                                 isTextFieldEmpty = false
-                                isLoading = true
-                            }
-
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                isLoading = false
+                                viewModel.isLoading = true
                             }
                         }
                     }) {

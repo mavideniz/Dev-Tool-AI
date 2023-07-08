@@ -10,7 +10,6 @@ import Alamofire
 struct ChatAppView: View {
     @StateObject private var viewModel = ChatAppViewModel()
     @State private var isTextFieldEmpty = false
-    @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -37,98 +36,88 @@ struct ChatAppView: View {
                                 scrollViewProxy.scrollTo(viewModel.messages.last?.id, anchor: .bottom)
                             }
                         }
-                    }
-                        .padding(.vertical, 8)
+                    }.padding(.vertical, 8)
                 }
 
                 HStack {
-                    if isLoading {
+                    if viewModel.isLoading {
                         ProgressView()
                             .controlSize(.small)
                             .padding(.trailing, 4)
-                        }
+                    }
 
-                        TextField("Write your message", text: $viewModel.currentInput)
-                            .textFieldStyle(.plain)
+                    TextField("Write your message", text: $viewModel.currentInput)
+                        .textFieldStyle(.plain)
+                        .padding(10)
+                        .background(Color(hex: "#767a82"))
+                        .font(.system(size: 16))
+                        .frame(height: 40)
+                        .cornerRadius(10)
+                        .onSubmit {
+                        if viewModel.currentInput.isEmpty {
+                            withAnimation {
+                                isTextFieldEmpty = true
+                            }
+                        } else {
+                            viewModel.sendMessage()
+                            withAnimation {
+                                isTextFieldEmpty = false
+                            }
+                        }
+                    }
+
+                    Button(action: {
+                        if viewModel.currentInput.isEmpty {
+                            withAnimation {
+                                isTextFieldEmpty = true
+                            }
+                        } else {
+                            viewModel.sendMessage()
+                            withAnimation {
+                                isTextFieldEmpty = false
+                                viewModel.isLoading = true
+                            }
+                        }
+                    }) {
+                        Image(systemName: "paperplane.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 20)
                             .padding(10)
-                            .background(Color(hex: "#767a82"))
-                            .font(.system(size: 16))
-                            .frame(height: 40)
-                            .cornerRadius(10)
-                            .onSubmit {
-                            if viewModel.currentInput.isEmpty {
-                                withAnimation {
-                                    isTextFieldEmpty = true
-                                }
-                            } else {
-                                viewModel.sendMessage()
-                                withAnimation {
-                                    isTextFieldEmpty = false
-                                    isLoading = true
-                                }
+                            .background(Color(hex: ColorConstants.secondColor))
 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    isLoading = false
-                                }
-                            }
-                        }
-
-                        Button(action: {
-                            if viewModel.currentInput.isEmpty {
-                                withAnimation {
-                                    isTextFieldEmpty = true
-                                }
-                            } else {
-                                viewModel.sendMessage()
-                                withAnimation {
-                                    isTextFieldEmpty = false
-                                    isLoading = true
-                                }
-
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    isLoading = false
-                                }
-                            }
-                        }) {
-                            Image(systemName: "paperplane.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 20)
-                                .padding(10)
-                                .background(Color(hex: ColorConstants.secondColor))
-
-                                .cornerRadius(8)
-                        }.buttonStyle(PlainButtonStyle())
-                    }.padding(.bottom, 15)
-                        .padding(.horizontal, 15)
-                }
-                    .cornerRadius(16)
-                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
+                            .cornerRadius(8)
+                    }.buttonStyle(PlainButtonStyle())
+                }.padding(.bottom, 15)
+                    .padding(.horizontal, 15)
             }
-        }
-
-        func messageView(message: Message) -> some View {
-            VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 8) {
-                if message.role == .assistant {
-                    Text(message.content)
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .background(Color(hex: ColorConstants.mainColor))
-                        .cornerRadius(8)
-                        .font(.custom(FontConstants.messageFont, size: 16))
-                } else {
-                    Text(message.content)
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .background(Color(hex: ColorConstants.secondColor))
-                        .cornerRadius(8)
-                        .font(.custom(FontConstants.messageFont, size: 16))
-                }
-            }.font(.system(size: 16))
-        } }
-
-    struct ChatAppView_Previews: PreviewProvider {
-        static var previews: some View {
-            ChatAppView()
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
         }
     }
+
+    func messageView(message: Message) -> some View {
+        VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 8) {
+            if message.role == .assistant {
+                Text(message.content)
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(Color(hex: ColorConstants.mainColor))
+                    .cornerRadius(8)
+                    .font(.custom(FontConstants.messageFont, size: 16))
+            } else {
+                Text(message.content)
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(Color(hex: ColorConstants.secondColor))
+                    .cornerRadius(8)
+                    .font(.custom(FontConstants.messageFont, size: 16))
+            }
+        }.font(.system(size: 16))
+    } }
+
+struct ChatAppView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatAppView()
+    }
+}

@@ -11,7 +11,6 @@ import Alamofire
 struct ManuelCommitView: View {
     @StateObject private var viewModel = CommitViewModel()
     @State private var isTextFieldEmpty = false
-    @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
 
     @EnvironmentObject var languageManager: LanguageManager
@@ -46,7 +45,7 @@ struct ManuelCommitView: View {
                 }
 
                 HStack {
-                    if isLoading {
+                    if viewModel.isLoading {
                         ProgressView()
                             .controlSize(.small)
                             .padding(.trailing, 4)
@@ -68,12 +67,9 @@ struct ManuelCommitView: View {
                             viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
-                                isLoading = true
+                                viewModel.isLoading = true
                             }
 
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                isLoading = false
-                            }
                         }
                     }
 
@@ -86,11 +82,7 @@ struct ManuelCommitView: View {
                             viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
-                                isLoading = true
-                            }
-
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                isLoading = false
+                                viewModel.isLoading = true
                             }
                         }
                     }) {

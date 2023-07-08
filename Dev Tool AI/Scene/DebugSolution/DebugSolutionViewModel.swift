@@ -11,8 +11,11 @@ class DebugSolutionViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var currentInput: String = ""
     private let openAIService = OpenAiService()
+    
+    @Published var isLoading: Bool = false
 
     func sendMessage() {
+        isLoading = true
         let newMessage = Message(id: UUID(), role: .user, content: currentInput, createAt: Date())
         messages.append(newMessage)
         currentInput = ""
@@ -26,6 +29,7 @@ class DebugSolutionViewModel: ObservableObject {
                 await MainActor.run {
                     messages.append(dummyMessage)
                 }
+                isLoading = false
                 return
             }
 
@@ -33,6 +37,7 @@ class DebugSolutionViewModel: ObservableObject {
 
             await MainActor.run {
                 messages.append(receivedMessage)
+                isLoading = false
             }
         }
     }

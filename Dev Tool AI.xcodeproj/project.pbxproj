@@ -25,6 +25,7 @@
 		66BFE66C2A5978C30052958F /* DebugSolutionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE66B2A5978C30052958F /* DebugSolutionViewModel.swift */; };
 		74E2A9902A595FAB00129AC8 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */; };
 		74E2A9922A595FCF00129AC8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9912A595FCF00129AC8 /* Message.swift */; };
+		74E2A9962A597BB400129AC8 /* ColorSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9952A597BB400129AC8 /* ColorSuggestionViewModel.swift */; };
 		C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA2D2A595C990051443C /* Color+HexColor.swift */; };
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
@@ -50,6 +51,7 @@
 		66BFE66B2A5978C30052958F /* DebugSolutionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSolutionViewModel.swift; sourceTree = "<group>"; };
 		74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
 		74E2A9912A595FCF00129AC8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		74E2A9952A597BB400129AC8 /* ColorSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSuggestionViewModel.swift; sourceTree = "<group>"; };
 		C227BA2D2A595C990051443C /* Color+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexColor.swift"; sourceTree = "<group>"; };
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
@@ -184,7 +186,8 @@
 		6653FE302A594374008A45DD /* ColorSuggestion */ = {
 			isa = PBXGroup;
 			children = (
-				66BFE6572A5945890052958F /* ColorSuggestionView.swift */,
+				74E2A9942A597BA900129AC8 /* ViewModel */,
+				74E2A9932A597BA400129AC8 /* View */,
 			);
 			path = ColorSuggestion;
 			sourceTree = "<group>";
@@ -213,6 +216,22 @@
 				66BFE64E2A59455D0052958F /* Service.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		74E2A9932A597BA400129AC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66BFE6572A5945890052958F /* ColorSuggestionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74E2A9942A597BA900129AC8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74E2A9952A597BB400129AC8 /* ColorSuggestionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C227BA2F2A595E600051443C /* Manager */ = {
@@ -304,6 +323,7 @@
 				C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */,
 				74E2A9902A595FAB00129AC8 /* CommitViewModel.swift in Sources */,
 				6653FE1A2A5942BB008A45DD /* Dev_Tool_AIApp.swift in Sources */,
+				74E2A9962A597BB400129AC8 /* ColorSuggestionViewModel.swift in Sources */,
 				66BFE65F2A5945A40052958F /* CommitView.swift in Sources */,
 				66BFE65D2A59459D0052958F /* SettingsView.swift in Sources */,
 				66BFE64F2A59455D0052958F /* Service.swift in Sources */,
@@ -446,7 +466,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = BZ727874J5;
+				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -474,7 +494,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = BZ727874J5;
+				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

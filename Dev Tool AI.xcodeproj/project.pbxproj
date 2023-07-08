@@ -20,9 +20,7 @@
 		66BFE65F2A5945A40052958F /* CommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE65E2A5945A40052958F /* CommitView.swift */; };
 		66BFE6612A5945AC0052958F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6602A5945AC0052958F /* MainView.swift */; };
 		66BFE6642A5955A50052958F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 66BFE6632A5955A50052958F /* Alamofire */; };
-		74E2A9882A595C1400129AC8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9872A595C1400129AC8 /* Message.swift */; };
-		74E2A98B2A595C5D00129AC8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A98A2A595C5D00129AC8 /* Constant.swift */; };
-		74E2A98E2A595C9A00129AC8 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A98D2A595C9A00129AC8 /* CommitViewModel.swift */; };
+		66BFE6662A595BFB0052958F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6652A595BFB0052958F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +38,7 @@
 		66BFE65C2A59459D0052958F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		66BFE65E2A5945A40052958F /* CommitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitView.swift; sourceTree = "<group>"; };
 		66BFE6602A5945AC0052958F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		74E2A9872A595C1400129AC8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		74E2A98A2A595C5D00129AC8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		74E2A98D2A595C9A00129AC8 /* CommitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
+		66BFE6652A595BFB0052958F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +124,8 @@
 		6653FE2B2A5942E4008A45DD /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				74E2A9892A595C5200129AC8 /* Shared */,
-				74E2A9862A595BED00129AC8 /* Model */,
 				66BFE6522A59456F0052958F /* CustomButton.swift */,
+				66BFE6652A595BFB0052958F /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -146,7 +141,6 @@
 		6653FE2D2A594364008A45DD /* Commit */ = {
 			isa = PBXGroup;
 			children = (
-				74E2A98C2A595C8400129AC8 /* ViewModel */,
 				66BFE65E2A5945A40052958F /* CommitView.swift */,
 			);
 			path = Commit;
@@ -198,30 +192,6 @@
 				66BFE64E2A59455D0052958F /* Service.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		74E2A9862A595BED00129AC8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				74E2A9872A595C1400129AC8 /* Message.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		74E2A9892A595C5200129AC8 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				74E2A98A2A595C5D00129AC8 /* Constant.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		74E2A98C2A595C8400129AC8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				74E2A98D2A595C9A00129AC8 /* CommitViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,18 +271,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				66BFE65B2A5945950052958F /* DebugSolutionView.swift in Sources */,
-				74E2A98E2A595C9A00129AC8 /* CommitViewModel.swift in Sources */,
 				6653FE1A2A5942BB008A45DD /* Dev_Tool_AIApp.swift in Sources */,
 				66BFE65F2A5945A40052958F /* CommitView.swift in Sources */,
 				66BFE65D2A59459D0052958F /* SettingsView.swift in Sources */,
 				66BFE64F2A59455D0052958F /* Service.swift in Sources */,
 				66BFE6582A5945890052958F /* ColorSuggestionView.swift in Sources */,
-				74E2A9882A595C1400129AC8 /* Message.swift in Sources */,
 				66BFE6612A5945AC0052958F /* MainView.swift in Sources */,
 				66BFE6512A5945670052958F /* Color+Extension.swift in Sources */,
 				66BFE6562A5945820052958F /* ChatAppView.swift in Sources */,
 				66BFE6532A59456F0052958F /* CustomButton.swift in Sources */,
-				74E2A98B2A595C5D00129AC8 /* Constant.swift in Sources */,
+				66BFE6662A595BFB0052958F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +410,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -470,7 +438,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

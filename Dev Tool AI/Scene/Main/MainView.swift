@@ -24,10 +24,10 @@ struct MainView: View {
             }
             ColorSuggestionView()
                 .tabItem {
-                Label("Order", systemImage: "square.and.pencil")
+                Label("Color", systemImage: "square.and.pencil")
             }
             
-        }.padding().frame(width: 300, height: 400)
+        }.padding().frame(width: 400, height: 400)
 
     }
 }

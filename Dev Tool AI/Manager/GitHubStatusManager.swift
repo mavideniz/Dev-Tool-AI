@@ -75,12 +75,12 @@ class GitHubStatusManager: ObservableObject {
         return longString
     }
 
-    func sendMessage() {
+    func sendMessage(language: String) {
         self.isLoading = true
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
-            Please analyze the following code and provide me with the commit message. Omit any descriptions or comments related to the code with bullet points. Here's the code:
+            Please analyze the following code and provide me with the commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. Here's the code:
             \(self.findChangedFilesDecription())
             """, createAt: Date())
 

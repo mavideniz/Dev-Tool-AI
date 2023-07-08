@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AutoCommitView: View {
     @EnvironmentObject var githubStatusManager: GitHubStatusManager
+    @EnvironmentObject var languageManager: LanguageManager
 
     @State private var shouldShowSuccessView: Bool = false
 
@@ -35,7 +36,7 @@ struct AutoCommitView: View {
                                             .multilineTextAlignment(.leading)
                                             .foregroundColor(.white)
                                         Button {
-                                            githubStatusManager.sendMessage()
+                                            githubStatusManager.sendMessage(language: languageManager.outputLanguage)
                                         } label: {
                                             Image(systemName: "arrow.clockwise")
                                                 .resizable()
@@ -57,7 +58,7 @@ struct AutoCommitView: View {
 
                                 if githubStatusManager.commitSummary == "" {
                                     Button {
-                                        self.githubStatusManager.sendMessage()
+                                        self.githubStatusManager.sendMessage(language: languageManager.outputLanguage)
                                     } label: {
                                         HStack() {
                                             Text("Generate")

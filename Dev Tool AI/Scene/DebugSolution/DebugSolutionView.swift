@@ -16,8 +16,12 @@ struct DebugSolutionView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("Chat Bot")
-                    .font(.custom("Futura-CondensedExtraBold", size: 16))
+                Text("🛠️ Debug Bot")
+                    .font(.custom(FontConstants.titleFont, size: 20))
+                    .padding(.top)
+                Text("Get rid of bugs")
+                    .font(.custom(FontConstants.titleFont, size: 16))
+                    .foregroundColor(.white.opacity(0.6))
                 ScrollView {
                     ScrollViewReader { scrollViewProxy in
                         LazyVStack(spacing: 8) {
@@ -44,30 +48,30 @@ struct DebugSolutionView: View {
                             .padding(.trailing, 4)
                     }
 
-
-                    TextField("Mesajınızı yazın", text: $viewModel.currentInput)
-                        .frame(height: 25)
-                        .textFieldStyle(PlainTextFieldStyle())
-                        .padding([.horizontal], 4)
-                        .cornerRadius(16)
-                        .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray.opacity(0.8)))
+                    TextField("Write your bug", text: $viewModel.currentInput)
+                        .textFieldStyle(.plain)
+                        .padding(10)
+                        .background(Color(hex: "#767a82"))
+                        .font(.system(size: 16))
+                        .frame(height: 40)
+                        .cornerRadius(10)
                         .onSubmit {
-                            if viewModel.currentInput.isEmpty {
-                                withAnimation {
-                                    isTextFieldEmpty = true
-                                }
-                            } else {
-                                viewModel.sendMessage()
-                                withAnimation {
-                                    isTextFieldEmpty = false
-                                    isLoading = true
-                                }
+                        if viewModel.currentInput.isEmpty {
+                            withAnimation {
+                                isTextFieldEmpty = true
+                            }
+                        } else {
+                            viewModel.sendMessage()
+                            withAnimation {
+                                isTextFieldEmpty = false
+                                isLoading = true
+                            }
 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    isLoading = false
-                                }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                isLoading = false
                             }
                         }
+                    }
 
                     Button(action: {
                         if viewModel.currentInput.isEmpty {
@@ -87,10 +91,15 @@ struct DebugSolutionView: View {
                         }
                     }) {
                         Image(systemName: "paperplane.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 20)
+                            .padding(10)
+                            .background(Color(hex: ColorConstants.secondColor))
                             .cornerRadius(8)
-                    }
-                }
-                    .padding()
+                    }.buttonStyle(PlainButtonStyle())
+                }.padding(.bottom, 15)
+                    .padding(.horizontal, 15)
             }
                 .cornerRadius(16)
                 .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
@@ -103,18 +112,19 @@ struct DebugSolutionView: View {
                 Text(message.content)
                     .padding(12)
                     .foregroundColor(.white)
-                    .background(Color.green.opacity(0.2))
+                    .background(Color(hex: ColorConstants.mainColor))
                     .cornerRadius(8)
+                    .font(.custom(FontConstants.messageFont, size: 16))
             } else {
                 Text(message.content)
                     .padding(12)
                     .foregroundColor(.white)
-                    .background(Color.gray.opacity(0.8))
+                    .background(Color(hex: ColorConstants.secondColor))
                     .cornerRadius(8)
+                    .font(.custom(FontConstants.messageFont, size: 16))
             }
-        }
-    }
-}
+        }.font(.system(size: 16))
+    }}
 
 struct DebugSolutionView_Previews: PreviewProvider {
     static var previews: some View {

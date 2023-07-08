@@ -20,7 +20,7 @@ struct SuccessMessagePopUpView: View {
             .foregroundColor(.white)
             .padding()
             .padding(.horizontal, 10)
-            .background(Color.black)
+            .background(Color(hex: ColorConstants.thirdColor))
             .cornerRadius(30)
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.top, 15)

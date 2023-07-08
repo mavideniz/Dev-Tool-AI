@@ -12,7 +12,7 @@ struct MainView: View {
         TabView {
             ChatAppView()
                 .tabItem {
-                Label("Chat", systemImage: "list.dash")
+                    Label("Chat", systemImage: "list.dash")
             }
             CommitView()
                 .tabItem {
@@ -30,7 +30,7 @@ struct MainView: View {
                 .tabItem {
                 Label("Settings", systemImage: "gear")
             }
-        }.padding().frame(width: 400, height: 400)
+        }.padding().frame(width: 500, height: 600)
 
     }
 }

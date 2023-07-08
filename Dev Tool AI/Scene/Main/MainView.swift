@@ -30,7 +30,20 @@ struct MainView: View {
                 .tabItem {
                 Label("Settings", systemImage: "gear")
             }
+<<<<<<< Updated upstream
         }.padding().frame(width: 500, height: 600)
+=======
+        }.padding().frame(width: 400, height: 400)
+            .onAppear {
+            if let files = GitHubStatusManager.shared.getChangedFiles() {
+                for file in files {
+                    print(file)
+                }
+            }
+
+
+        }
+>>>>>>> Stashed changes
 
     }
 }

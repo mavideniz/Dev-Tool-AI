@@ -19,6 +19,7 @@ struct ColorSuggestionView: View {
         ZStack {
             Color.clear.edgesIgnoringSafeArea(.all)
 
+<<<<<<< Updated upstream
             VStack {
                 Text("🎨 Color Bot")
                     .font(.custom(FontConstants.titleFont, size: 20))
@@ -26,6 +27,18 @@ struct ColorSuggestionView: View {
                 Text("Generate a new palette")
                     .font(.custom(FontConstants.titleFont, size: 16))
                     .foregroundColor(.white.opacity(0.6))
+=======
+                if self.viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+
+                if self.viewModel.shouldShowError {
+                    Text("No colors found. Try another keyword.")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                }
+>>>>>>> Stashed changes
 
                     .padding(.bottom)
                 VStack(spacing: 10) {
@@ -78,10 +91,33 @@ struct ColorSuggestionView: View {
                                     .padding(.bottom, 7)
                                     .background(Color.black.opacity(0.1))
                                     .cornerRadius(15)
+<<<<<<< Updated upstream
                                     .onTapGesture {
                                     shouldShowSuccessView = true
                                     CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
                                 }
+=======
+
+                                Text("\(viewModel.colorResponses[index].name)")
+                                    .minimumScaleFactor(0.01)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 13, weight: .bold))
+                                    .multilineTextAlignment(.center)
+                                    .padding(.top, 7)
+
+                                Text("\(viewModel.colorResponses[index].hexColor)")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 12))
+                                    .multilineTextAlignment(.center)
+                            }.frame(height: 150)
+                                .padding(5)
+                                .padding(.bottom, 7)
+                                .background(Color.black.opacity(0.1))
+                                .cornerRadius(15)
+                                .onTapGesture {
+                                shouldShowSuccessView = true
+                                CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
+>>>>>>> Stashed changes
                             }
                         }.padding(.horizontal, 5)
                     }

@@ -4,9 +4,6 @@
 //
 //  Created by Doğancan Mavideniz on 8.07.2023.
 //
-
-import SwiftUI
-
 import SwiftUI
 import Alamofire
 

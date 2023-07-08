@@ -20,13 +20,14 @@
 		66BFE65F2A5945A40052958F /* CommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE65E2A5945A40052958F /* CommitView.swift */; };
 		66BFE6612A5945AC0052958F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6602A5945AC0052958F /* MainView.swift */; };
 		66BFE6642A5955A50052958F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 66BFE6632A5955A50052958F /* Alamofire */; };
+		66BFE6662A595BFB0052958F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6652A595BFB0052958F /* Constants.swift */; };
+		66BFE6682A5962B10052958F /* ChatAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6672A5962B10052958F /* ChatAppViewModel.swift */; };
+		66BFE66C2A5978C30052958F /* DebugSolutionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE66B2A5978C30052958F /* DebugSolutionViewModel.swift */; };
+		74E2A9902A595FAB00129AC8 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */; };
+		74E2A9922A595FCF00129AC8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9912A595FCF00129AC8 /* Message.swift */; };
 		C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA2D2A595C990051443C /* Color+HexColor.swift */; };
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
-		66BFE6662A595BFB0052958F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6652A595BFB0052958F /* Constants.swift */; };
-		66BFE6682A5962B10052958F /* ChatAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6672A5962B10052958F /* ChatAppViewModel.swift */; };
-		74E2A9902A595FAB00129AC8 /* CommitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */; };
-		74E2A9922A595FCF00129AC8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E2A9912A595FCF00129AC8 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,13 +45,14 @@
 		66BFE65C2A59459D0052958F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		66BFE65E2A5945A40052958F /* CommitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitView.swift; sourceTree = "<group>"; };
 		66BFE6602A5945AC0052958F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		66BFE6652A595BFB0052958F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		66BFE6672A5962B10052958F /* ChatAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppViewModel.swift; sourceTree = "<group>"; };
+		66BFE66B2A5978C30052958F /* DebugSolutionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSolutionViewModel.swift; sourceTree = "<group>"; };
+		74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
+		74E2A9912A595FCF00129AC8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C227BA2D2A595C990051443C /* Color+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexColor.swift"; sourceTree = "<group>"; };
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
-		66BFE6652A595BFB0052958F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		66BFE6672A5962B10052958F /* ChatAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppViewModel.swift; sourceTree = "<group>"; };
-		74E2A98F2A595FAB00129AC8 /* CommitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitViewModel.swift; sourceTree = "<group>"; };
-		74E2A9912A595FCF00129AC8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				66BFE65A2A5945950052958F /* DebugSolutionView.swift */,
+				66BFE66B2A5978C30052958F /* DebugSolutionViewModel.swift */,
 			);
 			path = DebugSolution;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */,
 				66BFE6512A5945670052958F /* Color+Extension.swift in Sources */,
 				74E2A9922A595FCF00129AC8 /* Message.swift in Sources */,
+				66BFE66C2A5978C30052958F /* DebugSolutionViewModel.swift in Sources */,
 				66BFE6562A5945820052958F /* ChatAppView.swift in Sources */,
 				66BFE6532A59456F0052958F /* CustomButton.swift in Sources */,
 				C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */,

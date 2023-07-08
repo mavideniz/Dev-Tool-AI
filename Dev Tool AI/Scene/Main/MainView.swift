@@ -20,7 +20,7 @@ struct MainView: View {
             }
             DebugSolutionView()
                 .tabItem {
-                Label("Menu", systemImage: "list.dash")
+                Label("Debug", systemImage: "list.dash")
             }
             ColorSuggestionView()
                 .tabItem {

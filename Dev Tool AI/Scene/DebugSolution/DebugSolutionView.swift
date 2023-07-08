@@ -14,63 +14,87 @@ struct DebugSolutionView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            Text("Chat Bot")
-                .font(.custom("Futura-CondensedExtraBold", size: 16))
-            ScrollView {
-                ScrollViewReader { scrollViewProxy in
-                    LazyVStack(spacing: 8) {
-                        ForEach(viewModel.messages.filter({ $0.role != .system }), id: \.id) { message in
-                            messageView(message: message)
-                                .id(message.id)
-                                .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
+        ZStack {
+            VStack {
+                Text("Chat Bot")
+                    .font(.custom("Futura-CondensedExtraBold", size: 16))
+                ScrollView {
+                    ScrollViewReader { scrollViewProxy in
+                        LazyVStack(spacing: 8) {
+                            ForEach(viewModel.messages.filter({ $0.role != .system }), id: \.id) { message in
+                                messageView(message: message)
+                                    .id(message.id)
+                                    .frame(maxWidth: .infinity, alignment: message.role == .user ? .trailing : .leading)
+                            }
+                        }
+                            .padding(.horizontal)
+                            .onChange(of: viewModel.messages) { _ in
+                            withAnimation {
+                                scrollViewProxy.scrollTo(viewModel.messages.last?.id, anchor: .bottom)
+                            }
                         }
                     }
-                        .padding(.horizontal)
-                        .onChange(of: viewModel.messages) { _ in
-                        withAnimation {
-                            scrollViewProxy.scrollTo(viewModel.messages.last?.id, anchor: .bottom)
+                        .padding(.vertical, 8)
+                }
+
+                HStack {
+                    if isLoading {
+                        ProgressView()
+                            .controlSize(.small)
+                            .padding(.trailing, 4)
+                    }
+
+
+                    TextField("Mesajınızı yazın", text: $viewModel.currentInput)
+                        .frame(height: 25)
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .padding([.horizontal], 4)
+                        .cornerRadius(16)
+                        .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray.opacity(0.8)))
+                        .onSubmit {
+                            if viewModel.currentInput.isEmpty {
+                                withAnimation {
+                                    isTextFieldEmpty = true
+                                }
+                            } else {
+                                viewModel.sendMessage()
+                                withAnimation {
+                                    isTextFieldEmpty = false
+                                    isLoading = true
+                                }
+
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    isLoading = false
+                                }
+                            }
                         }
+
+                    Button(action: {
+                        if viewModel.currentInput.isEmpty {
+                            withAnimation {
+                                isTextFieldEmpty = true
+                            }
+                        } else {
+                            viewModel.sendMessage()
+                            withAnimation {
+                                isTextFieldEmpty = false
+                                isLoading = true
+                            }
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                isLoading = false
+                            }
+                        }
+                    }) {
+                        Image(systemName: "paperplane.fill")
+                            .cornerRadius(8)
                     }
                 }
-                    .padding(.vertical, 8)
+                    .padding()
             }
-
-            HStack {
-                if isLoading {
-                    ProgressView()
-                        .padding()
-                }
-
-                TextField("Mesajınızı yazın", text: $viewModel.currentInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                Button(action: {
-                    if viewModel.currentInput.isEmpty {
-                        withAnimation {
-                            isTextFieldEmpty = true
-                        }
-                    } else {
-                        viewModel.sendMessage()
-                        withAnimation {
-                            isTextFieldEmpty = false
-                            isLoading = true
-                        }
-
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            isLoading = false
-                        }
-                    }
-                }) {
-                    Image(systemName: "paperplane.fill")
-                        .cornerRadius(8)
-                }
-            }
-                .padding()
+                .cornerRadius(16)
+                .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
         }
-            .cornerRadius(16)
-            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
-            .padding()
     }
 
     func messageView(message: Message) -> some View {

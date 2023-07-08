@@ -19,6 +19,18 @@ struct ColorSuggestionView: View {
         ZStack {
             Color.clear.edgesIgnoringSafeArea(.all)
             VStack(spacing: 10) {
+
+                if self.viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+                
+                if self.viewModel.shouldShowError {
+                    Text("No colors found. Try another keyword.")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                }
+
                 TextField("Keyword", text: $keywordText)
                     .textFieldStyle(.plain)
                     .padding(15)
@@ -50,7 +62,8 @@ struct ColorSuggestionView: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 12))
                                     .multilineTextAlignment(.center)
-                            }.padding(5)
+                            }.frame(height: 150)
+                            .padding(5)
                                 .padding(.bottom, 7)
                                 .background(Color.black.opacity(0.1))
                                 .cornerRadius(15)

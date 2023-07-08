@@ -29,31 +29,36 @@ struct ColorSuggestionView: View {
 
                     .padding(.bottom)
                 VStack(spacing: 10) {
-                    if self.viewModel.isLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                    }
+                    
 
                     if self.viewModel.shouldShowError {
                         Text("No colors found. Try another keyword.")
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
                     }
-
-                    TextField("Write your keyword", text: $keywordText)
-                        .font(.system(size: 16))
-                        .frame(width: 350)
-                        .textFieldStyle(.plain)
-                        .padding(15)
-                        .background(Color(hex: "#767a82"))
-                        .cornerRadius(10)
-                        .padding(.horizontal, 40)
-
-
+                    ZStack {
+                        
+                        TextField("Write your keyword", text: $keywordText)
+                            .font(.system(size: 16))
+                            .frame(width: 350)
+                            .textFieldStyle(.plain)
+                            .padding(15)
+                            .background(Color(hex: "#767a82"))
+                            .cornerRadius(10)
+                            .padding(.horizontal, 40)
+                        HStack {
+                            Spacer()
+                            if self.viewModel.isLoading {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .controlSize(.small)
+                                    .padding(.trailing, 60)
+                            }
+                        }
+                        
+                    }
+                    
                     if searchResultKeyword != "" && viewModel.colorResponses.count > 1 {
-                        Text("\(searchResultKeyword)")
-                            .italic()
-
                         HStack {
                             ForEach(0..<viewModel.colorResponses.count, id: \.self) { index in
                                 VStack(spacing: 2) {
@@ -95,7 +100,6 @@ struct ColorSuggestionView: View {
                             Text(searchResultKeyword == "" ? "Generate" : "Regenerate")
                                 .font(.system(size: 15, weight: .bold))
                                 .foregroundColor(.white)
-
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.white)
                                 .scaledToFit()
@@ -106,11 +110,14 @@ struct ColorSuggestionView: View {
                             .cornerRadius(15)
                     }.buttonStyle(.plain)
                         .disabled(keywordText.count == 0)
+                        .padding(.top, 8)
                 }
 
-                if shouldShowSuccessView {
-                    SuccessMessagePopUpView(shouldShow: $shouldShowSuccessView, text: "Hex color copied!")
-                }
+                
+            }
+            
+            if shouldShowSuccessView {
+                SuccessMessagePopUpView(shouldShow: $shouldShowSuccessView, text: "Hex color copied!")
             }
         }
     }

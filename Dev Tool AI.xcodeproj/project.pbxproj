@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6653FE1A2A5942BB008A45DD /* Dev_Tool_AIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653FE192A5942BB008A45DD /* Dev_Tool_AIApp.swift */; };
-		6653FE1C2A5942BB008A45DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653FE1B2A5942BB008A45DD /* ContentView.swift */; };
 		6653FE1E2A5942BC008A45DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653FE1D2A5942BC008A45DD /* Assets.xcassets */; };
 		6653FE212A5942BC008A45DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653FE202A5942BC008A45DD /* Preview Assets.xcassets */; };
 		66BFE64F2A59455D0052958F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE64E2A59455D0052958F /* Service.swift */; };
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		6653FE162A5942BB008A45DD /* Dev Tool AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dev Tool AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6653FE192A5942BB008A45DD /* Dev_Tool_AIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dev_Tool_AIApp.swift; sourceTree = "<group>"; };
-		6653FE1B2A5942BB008A45DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6653FE1D2A5942BC008A45DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6653FE202A5942BC008A45DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6653FE222A5942BC008A45DD /* Dev_Tool_AI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dev_Tool_AI.entitlements; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				6653FE2E2A594368008A45DD /* Settings */,
 				6653FE2D2A594364008A45DD /* Commit */,
 				6653FE2C2A59430A008A45DD /* Main */,
-				6653FE1B2A5942BB008A45DD /* ContentView.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -270,7 +267,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6653FE1C2A5942BB008A45DD /* ContentView.swift in Sources */,
 				66BFE65B2A5945950052958F /* DebugSolutionView.swift in Sources */,
 				6653FE1A2A5942BB008A45DD /* Dev_Tool_AIApp.swift in Sources */,
 				66BFE65F2A5945A40052958F /* CommitView.swift in Sources */,
@@ -410,7 +406,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = BZ727874J5;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -438,7 +434,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = BZ727874J5;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

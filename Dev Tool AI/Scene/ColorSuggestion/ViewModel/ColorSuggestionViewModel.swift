@@ -47,7 +47,6 @@ final class ColorSuggestionViewModel: ObservableObject {
                 }
                 
                 let dividedMessages = messages.split(separator: "\n")
-                print("***\(dividedMessages)")
 
                 for colorModels in dividedMessages {
                     let dividedColors = colorModels.split(separator: ",")

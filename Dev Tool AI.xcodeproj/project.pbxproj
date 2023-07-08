@@ -30,6 +30,7 @@
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
 		C227BA362A597CB90051443C /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA352A597CB90051443C /* ColorModel.swift */; };
+		C227BA382A59AA3D0051443C /* GitHubStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA372A59AA3C0051443C /* GitHubStatusManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
 		C227BA352A597CB90051443C /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
+		C227BA372A59AA3C0051443C /* GitHubStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubStatusManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				C227BA302A595E6E0051443C /* CopyClipboardManager.swift */,
+				C227BA372A59AA3C0051443C /* GitHubStatusManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				66BFE6612A5945AC0052958F /* MainView.swift in Sources */,
 				C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */,
 				66BFE6512A5945670052958F /* Color+Extension.swift in Sources */,
+				C227BA382A59AA3D0051443C /* GitHubStatusManager.swift in Sources */,
 				74E2A9922A595FCF00129AC8 /* Message.swift in Sources */,
 				66BFE66C2A5978C30052958F /* DebugSolutionViewModel.swift in Sources */,
 				66BFE6562A5945820052958F /* ChatAppView.swift in Sources */,
@@ -478,7 +482,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -506,7 +510,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

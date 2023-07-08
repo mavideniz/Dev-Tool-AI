@@ -11,6 +11,15 @@
 		6653FE1C2A5942BB008A45DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653FE1B2A5942BB008A45DD /* ContentView.swift */; };
 		6653FE1E2A5942BC008A45DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653FE1D2A5942BC008A45DD /* Assets.xcassets */; };
 		6653FE212A5942BC008A45DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6653FE202A5942BC008A45DD /* Preview Assets.xcassets */; };
+		66BFE64F2A59455D0052958F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE64E2A59455D0052958F /* Service.swift */; };
+		66BFE6512A5945670052958F /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6502A5945670052958F /* Color+Extension.swift */; };
+		66BFE6532A59456F0052958F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6522A59456F0052958F /* CustomButton.swift */; };
+		66BFE6562A5945820052958F /* ChatAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6552A5945820052958F /* ChatAppView.swift */; };
+		66BFE6582A5945890052958F /* ColorSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6572A5945890052958F /* ColorSuggestionView.swift */; };
+		66BFE65B2A5945950052958F /* DebugSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE65A2A5945950052958F /* DebugSolutionView.swift */; };
+		66BFE65D2A59459D0052958F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE65C2A59459D0052958F /* SettingsView.swift */; };
+		66BFE65F2A5945A40052958F /* CommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE65E2A5945A40052958F /* CommitView.swift */; };
+		66BFE6612A5945AC0052958F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFE6602A5945AC0052958F /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +29,15 @@
 		6653FE1D2A5942BC008A45DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6653FE202A5942BC008A45DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6653FE222A5942BC008A45DD /* Dev_Tool_AI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dev_Tool_AI.entitlements; sourceTree = "<group>"; };
+		66BFE64E2A59455D0052958F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		66BFE6502A5945670052958F /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		66BFE6522A59456F0052958F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		66BFE6552A5945820052958F /* ChatAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppView.swift; sourceTree = "<group>"; };
+		66BFE6572A5945890052958F /* ColorSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSuggestionView.swift; sourceTree = "<group>"; };
+		66BFE65A2A5945950052958F /* DebugSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSolutionView.swift; sourceTree = "<group>"; };
+		66BFE65C2A59459D0052958F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		66BFE65E2A5945A40052958F /* CommitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitView.swift; sourceTree = "<group>"; };
+		66BFE6602A5945AC0052958F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +123,7 @@
 		6653FE2B2A5942E4008A45DD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE6522A59456F0052958F /* CustomButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -112,6 +131,7 @@
 		6653FE2C2A59430A008A45DD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE6602A5945AC0052958F /* MainView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -119,6 +139,7 @@
 		6653FE2D2A594364008A45DD /* Commit */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE65E2A5945A40052958F /* CommitView.swift */,
 			);
 			path = Commit;
 			sourceTree = "<group>";
@@ -126,6 +147,7 @@
 		6653FE2E2A594368008A45DD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE65C2A59459D0052958F /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -133,6 +155,7 @@
 		6653FE2F2A59436C008A45DD /* DebugSolution */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE65A2A5945950052958F /* DebugSolutionView.swift */,
 			);
 			path = DebugSolution;
 			sourceTree = "<group>";
@@ -140,6 +163,7 @@
 		6653FE302A594374008A45DD /* ColorSuggestion */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE6572A5945890052958F /* ColorSuggestionView.swift */,
 			);
 			path = ColorSuggestion;
 			sourceTree = "<group>";
@@ -147,6 +171,7 @@
 		6653FE312A594393008A45DD /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE6552A5945820052958F /* ChatAppView.swift */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -154,6 +179,7 @@
 		6653FE322A5943E0008A45DD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE6502A5945670052958F /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -161,6 +187,7 @@
 		6653FE332A5943E4008A45DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				66BFE64E2A59455D0052958F /* Service.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -236,7 +263,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6653FE1C2A5942BB008A45DD /* ContentView.swift in Sources */,
+				66BFE65B2A5945950052958F /* DebugSolutionView.swift in Sources */,
 				6653FE1A2A5942BB008A45DD /* Dev_Tool_AIApp.swift in Sources */,
+				66BFE65F2A5945A40052958F /* CommitView.swift in Sources */,
+				66BFE65D2A59459D0052958F /* SettingsView.swift in Sources */,
+				66BFE64F2A59455D0052958F /* Service.swift in Sources */,
+				66BFE6582A5945890052958F /* ColorSuggestionView.swift in Sources */,
+				66BFE6612A5945AC0052958F /* MainView.swift in Sources */,
+				66BFE6512A5945670052958F /* Color+Extension.swift in Sources */,
+				66BFE6562A5945820052958F /* ChatAppView.swift in Sources */,
+				66BFE6532A59456F0052958F /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

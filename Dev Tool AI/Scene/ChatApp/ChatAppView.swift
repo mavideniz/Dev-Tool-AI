@@ -11,6 +11,8 @@ struct ChatAppView: View {
     @StateObject private var viewModel = ChatAppViewModel()
     @State private var isTextFieldEmpty = false
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var languageManager: LanguageManager
+
 
     var body: some View {
         ZStack {
@@ -59,7 +61,7 @@ struct ChatAppView: View {
                                 isTextFieldEmpty = true
                             }
                         } else {
-                            viewModel.sendMessage()
+                            viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
                             }
@@ -72,7 +74,7 @@ struct ChatAppView: View {
                                 isTextFieldEmpty = true
                             }
                         } else {
-                            viewModel.sendMessage()
+                            viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
                                 viewModel.isLoading = true

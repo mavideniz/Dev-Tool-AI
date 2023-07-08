@@ -14,7 +14,16 @@ class ChatAppViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
 
-    func sendMessage() {
+    func sendMessage(prefix: String, output: String) {
+
+        let initialPrompt = """
+            As a act senior software developer,\(prefix). Give the next answers in \(output).
+            """
+        
+        // TODO: Debug -- I'm encountering an error in my code in swift. Can you please help me troubleshoot and find a solution? Here's the error message I'm getting:
+        let systemMessage = Message(id: UUID(), role: .system, content: initialPrompt, createAt: Date())
+        messages.append(systemMessage)
+        
         isLoading = true
         let newMessage = Message(id: UUID(), role: .user, content: currentInput, createAt: Date())
         messages.append(newMessage)
@@ -40,16 +49,6 @@ class ChatAppViewModel: ObservableObject {
                 isLoading = false
             }
         }
-    }
-
-    init() {
-        let initialPrompt = """
-            As a act senior software developer,
-            """
-        
-        // TODO: Debug -- I'm encountering an error in my code in swift. Can you please help me troubleshoot and find a solution? Here's the error message I'm getting:
-        let systemMessage = Message(id: UUID(), role: .system, content: initialPrompt, createAt: Date())
-        messages.append(systemMessage)
     }
 }
 

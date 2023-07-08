@@ -12,6 +12,7 @@ class GitHubStatusManager: ObservableObject {
     @Published var commitSummary: String = ""
     private let openAIService = OpenAiService()
     @AppStorage("directory") var directory: String = ""
+    @Published var changedFiles: [String] = []
 
     @Published var isLoading: Bool = false
 
@@ -40,29 +41,30 @@ class GitHubStatusManager: ObservableObject {
         }
     }
 
-//    func getChangedFiles() -> [String]? {
-//        let task = Process()
-//        let pipe = Pipe()
-//
-//        task.launchPath = "/usr/bin/env" // Path to the Git executable
-//        task.currentDirectoryPath = "/Users/giray/Documents/GitHub/Dev-Tool-AI" // Path to your Git repository
-//
-//        task.arguments = ["git", "diff", "--name-only", "HEAD"] // Git command and arguments
-//
-//        task.standardOutput = pipe
-//        task.launch()
-//
-//        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-//        let output = String(data: data, encoding: .utf8)
-//
-//        task.waitUntilExit()
-//
-//        if task.terminationStatus == 0, let fileNames = output?.components(separatedBy: .newlines) {
-//            return fileNames
-//        } else {
-//            return nil
-//        }
-//    }
+    func getChangedFiles() -> [String]? {
+        let task = Process()
+        let pipe = Pipe()
+
+        task.launchPath = "/usr/bin/env" // Path to the Git executable
+        task.currentDirectoryPath = "/Users/giray/Documents/GitHub/Dev-Tool-AI" // Path to your Git repository
+
+        task.arguments = ["git", "diff", "--name-only", "HEAD"] // Git command and arguments
+
+        task.standardOutput = pipe
+        task.launch()
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)
+
+        task.waitUntilExit()
+
+        if task.terminationStatus == 0, let fileNames = output?.components(separatedBy: .newlines) {
+            self.changedFiles = fileNames
+            return fileNames
+        } else {
+            return nil
+        }
+    }
 
     func findChangedFilesDecription() -> String {
         var longString = ""
@@ -80,7 +82,7 @@ class GitHubStatusManager: ObservableObject {
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
-            Please analyze the following code and provide me with the commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. Here's the code:
+            Please analyze the following code and provide me with the commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. Describe in maximum 300 characters. Here's the code:
             \(self.findChangedFilesDecription())
             """, createAt: Date())
 

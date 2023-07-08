@@ -28,74 +28,82 @@ struct AutoCommitView: View {
                     if githubStatusManager.isLoading {
                         ProgressView()
                     } else {
-                        HStack {
-                            VStack(alignment: .center, spacing: 10) {
-                                if githubStatusManager.commitSummary != "" {
-                                    HStack {
-                                        Text("\(githubStatusManager.commitSummary)")
-                                            .multilineTextAlignment(.leading)
-                                            .foregroundColor(.white)
-                                        Button {
-                                            githubStatusManager.sendMessage(language: languageManager.outputLanguage)
-                                        } label: {
-                                            Image(systemName: "arrow.clockwise")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 20, height: 20)
-                                                .foregroundColor(.blue)
-                                                .padding(8)
-                                                .background(Color.white)
-                                                .cornerRadius(30)
-                                        }.buttonStyle(.plain)
-                                    }.padding(.top, -5)
-                                        .frame(maxWidth: .infinity)
-                                        .padding()
-                                        .background(Color(hex: ColorConstants.secondColor))
-                                        .cornerRadius(30)
-                                        .padding(.horizontal, 10)
-                                }
-                                Spacer()
+                        VStack(alignment: .center, spacing: 10) {
 
-                                if githubStatusManager.commitSummary == "" {
-                                    Button {
-                                        self.githubStatusManager.sendMessage(language: languageManager.outputLanguage)
-                                    } label: {
-                                        HStack() {
-                                            Text("Generate")
-                                                .font(.system(size: 15, weight: .bold))
-                                                .foregroundColor(.white)
-                                            Image(systemName: "chevron.right")
-                                                .foregroundColor(.white)
-                                                .scaledToFit()
-                                        }.frame(width: 150)
-                                            .padding(.horizontal, 15)
-                                            .padding(.vertical, 10)
-                                            .background(Color(hex: ColorConstants.secondColor))
-                                            .cornerRadius(15)
-                                    }.buttonStyle(.plain)
-                                        .padding(.bottom, 250)
+                            VStack(spacing: 5) {
+                                ForEach(0..<githubStatusManager.changedFiles.count, id: \.self) { index in
+                                    Text(githubStatusManager.changedFiles[index])
+                                        .foregroundColor(.white)
                                 }
-                                else {
+                            }.padding(.top, 35)
+
+                            if githubStatusManager.commitSummary != "" {
+                                HStack {
+                                    Text("\(githubStatusManager.commitSummary)")
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundColor(.white)
                                     Button {
-                                        CopyClipboardManager.shared.copyToClipboard(string: githubStatusManager.commitSummary)
-                                        self.shouldShowSuccessView = true
+                                        githubStatusManager.sendMessage(language: languageManager.outputLanguage)
                                     } label: {
-                                        HStack() {
-                                            Text("Copy to clipboard")
-                                                .font(.system(size: 15, weight: .bold))
-                                        }.frame(width: 150)
-                                            .padding(.horizontal, 15)
-                                            .padding(.vertical, 10)
-                                            .background(Color(hex: ColorConstants.secondColor))
-                                            .cornerRadius(15)
+                                        Image(systemName: "arrow.clockwise")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 20, height: 20)
+                                            .foregroundColor(.blue)
+                                            .padding(8)
+                                            .background(Color.white)
+                                            .cornerRadius(30)
                                     }.buttonStyle(.plain)
-                                        .padding(.bottom, 250)
-                                }
+                                }.padding(.top, -5)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color(hex: ColorConstants.secondColor))
+                                    .cornerRadius(30)
+                                    .padding(.horizontal, 10)
+                            }
+
+                            if githubStatusManager.commitSummary == "" {
+                                Button {
+                                    self.githubStatusManager.sendMessage(language: languageManager.outputLanguage)
+                                } label: {
+                                    HStack() {
+                                        Text("Generate")
+                                            .font(.system(size: 15, weight: .bold))
+                                            .foregroundColor(.white)
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.white)
+                                            .scaledToFit()
+                                    }.frame(width: 150)
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 10)
+                                        .background(Color(hex: ColorConstants.secondColor))
+                                        .cornerRadius(15)
+                                }.buttonStyle(.plain)
+                                    .padding(.bottom, 250)
+                            }
+                            else {
+                                Button {
+                                    CopyClipboardManager.shared.copyToClipboard(string: githubStatusManager.commitSummary)
+                                    self.shouldShowSuccessView = true
+                                } label: {
+                                    HStack() {
+                                        Text("Copy the commit")
+                                            .foregroundColor(.blue)
+                                            .font(.system(size: 15, weight: .bold))
+                                    }.frame(width: 150)
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 10)
+                                        .background(.white)
+                                        .cornerRadius(15)
+                                        .padding(.bottom, 15)
+                                }.buttonStyle(.plain)
                             }
                         }
                     }
 
                 }
+            }.onAppear {
+                githubStatusManager.getChangedFiles()
             }
 
             if shouldShowSuccessView {

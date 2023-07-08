@@ -9,7 +9,26 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ChatAppView()
+                .tabItem {
+                Label("Chat", systemImage: "list.dash")
+            }
+            CommitView()
+                .tabItem {
+                Label("Commit", systemImage: "square.and.pencil")
+            }
+            DebugSolutionView()
+                .tabItem {
+                Label("Menu", systemImage: "list.dash")
+            }
+            ColorSuggestionView()
+                .tabItem {
+                Label("Order", systemImage: "square.and.pencil")
+            }
+            
+        }.padding().frame(width: 300, height: 400)
+
     }
 }
 

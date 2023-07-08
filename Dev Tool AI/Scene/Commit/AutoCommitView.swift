@@ -26,11 +26,10 @@ struct AutoCommitView: View {
                         VStack(alignment: .center, spacing: 10) {
 
                             if githubStatusManager.commitSummary != "" {
-                                Text("AUTOMATIC MESSAGE")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .font(.system(size: 18))
-                                    .foregroundColor(.yellow)
-                                    .padding(.horizontal, 10)
+                                Text("Auto Commit")
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .font(.custom(FontConstants.titleFont, size: 25))
+                                    .foregroundColor(.black)
                                     .padding(.top, 20)
 
                                 HStack {

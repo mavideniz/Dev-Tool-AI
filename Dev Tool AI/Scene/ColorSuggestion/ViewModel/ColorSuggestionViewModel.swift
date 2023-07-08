@@ -9,13 +9,19 @@ import Foundation
 
 final class ColorSuggestionViewModel: ObservableObject {
     @Published var messages: [Message] = []
-    @Published var currentInput: String = ""
     private let openAIService = OpenAiService()
+    
+    @Published var keyword: String = ""
+    
+    @Published var colorResponses: [ColorModel] = [
+        
+    ]
 
     func sendMessage() {
-        let newMessage = Message(id: UUID(), role: .user, content: currentInput, createAt: Date())
+        self.colorResponses.removeAll()
+        let newMessage = Message(id: UUID(), role: .user, content: keyword, createAt: Date())
         messages.append(newMessage)
-        currentInput = ""
+        keyword = ""
 
         Task {
             let response = await openAIService.sendMessage(messages: messages)
@@ -33,17 +39,31 @@ final class ColorSuggestionViewModel: ObservableObject {
 
             await MainActor.run {
                 messages.append(receivedMessage)
+                var messages = receivedMessage.content
+                messages.removeAll { element in
+                    element == "-"
+                }
+                let dividedMessages = messages.split(separator: "\n")
+                
+                for colorModels in dividedMessages {
+                    let dividedColors = colorModels.split(separator: ",")
+                    let name = String(dividedColors[0])
+                    let hexColor = String(dividedColors[1])
+                    
+                    let colorModel = ColorModel(name: name, hexColor: hexColor)
+                    self.colorResponses.append(colorModel)
+                }
             }
         }
     }
 
     init() {
         let initialPrompt = """
-            I will give a keyword and I want you to find me the related 4 different colors and give those colors in the following format. Make colors numbered bullet list and give color name and then put comma and write hex code of the color. Only give list as your answer, don't write anything else. ONLY THE COLORS. My keyword is
+            I will give a keyword and I want you to find me the related 4 different colors and give those colors in the following format. Make colors numbered bullet list and give color name and then put , and write hex code of the color. Only give list as your answer, don't write anything else. ONLY THE COLORS. My keyword is
             """
         // Put an appropriate emoji at the beginning of the commit message.
         // Put an appropriate prefix like [bug-fix], [feature] at the beginning of the commit message.
-        
+
         // In Turkish
         // In Arabic
         // In English

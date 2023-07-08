@@ -29,6 +29,7 @@
 		C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA2D2A595C990051443C /* Color+HexColor.swift */; };
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
+		C227BA362A597CB90051443C /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA352A597CB90051443C /* ColorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		C227BA2D2A595C990051443C /* Color+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexColor.swift"; sourceTree = "<group>"; };
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
+		C227BA352A597CB90051443C /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 		6653FE302A594374008A45DD /* ColorSuggestion */ = {
 			isa = PBXGroup;
 			children = (
+				C227BA342A597CA80051443C /* Model */,
 				74E2A9942A597BA900129AC8 /* ViewModel */,
 				74E2A9932A597BA400129AC8 /* View */,
 			);
@@ -240,6 +243,14 @@
 				C227BA302A595E6E0051443C /* CopyClipboardManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		C227BA342A597CA80051443C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C227BA352A597CB90051443C /* ColorModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 				66BFE6532A59456F0052958F /* CustomButton.swift in Sources */,
 				C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */,
 				66BFE6662A595BFB0052958F /* Constants.swift in Sources */,
+				C227BA362A597CB90051443C /* ColorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +478,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -494,7 +506,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dev Tool AI/Preview Content\"";
-				DEVELOPMENT_TEAM = 3CY5GSUS4Z;
+				DEVELOPMENT_TEAM = SRDDFQ29BU;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

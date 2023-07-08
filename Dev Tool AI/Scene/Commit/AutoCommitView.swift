@@ -20,7 +20,7 @@ struct AutoCommitView: View {
                     Text("👋🏻 Auto Commit Bot")
                         .font(.custom(FontConstants.titleFont, size: 20))
                         .padding(.top)
-                    Text("Generate a auto commit")
+                    Text("Generate an auto commit")
                         .font(.custom(FontConstants.titleFont, size: 16))
                         .foregroundColor(.white.opacity(0.6))
 

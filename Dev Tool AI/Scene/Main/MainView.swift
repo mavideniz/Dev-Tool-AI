@@ -26,7 +26,11 @@ struct MainView: View {
                 .tabItem {
                 Label("Order", systemImage: "square.and.pencil")
             }
-            
+            SettingsView()
+                .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
+
         }.padding().frame(width: 300, height: 400)
 
     }

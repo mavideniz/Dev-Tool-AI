@@ -11,7 +11,9 @@ struct SettingsView: View {
     @State private var selectedPrefix = 0
     @State private var selectedOutput = "English"
     var lang = ["English", "Turkish", "Spanish", "Arabic"]
-    @State private var directory: String = ""
+    
+    @AppStorage("directory") var directory: String = ""
+    
     var body: some View {
         ZStack {
             VStack {

@@ -5,7 +5,7 @@
 //  Created by Giray on 8.07.2023.
 //
 
-import Foundation
+import SwiftUI
 
 class GitHubStatusManager: ObservableObject {
 //    @Published var messages: [Message] = []
@@ -14,6 +14,8 @@ class GitHubStatusManager: ObservableObject {
     @Published var commitSummary: String = ""
 
     private let openAIService = OpenAiService()
+    
+    @AppStorage("directory") var directory: String = ""
 
     func getFiles() -> [String]? {
         let task = Process()
@@ -21,7 +23,7 @@ class GitHubStatusManager: ObservableObject {
 
         task.launchPath = "/usr/bin/env" // Path to the Git executable
         // /Users/giray/Documents/GitHub/Dev-Tool-AI
-        task.currentDirectoryPath = "/Users/mehmetalidemir/Documents/GitHub/Adsız" // Path to your Git repository
+        task.currentDirectoryPath = directory
 
         task.arguments = ["git", "diff", "--minimal", "HEAD"] // Git command and arguments
 

@@ -11,6 +11,7 @@ struct SettingsView: View {
     @State private var selectedPrefix = 0
     @State private var selectedOutput = "English"
     var lang = ["English", "Turkish", "Spanish", "Arabic"]
+    @State private var directory: String = ""
     var body: some View {
         ZStack {
             VStack {
@@ -56,6 +57,19 @@ struct SettingsView: View {
                     UserDefaults.standard.set(newValue, forKey: "output")
                     print(UserDefaults.standard.string(forKey: "output"))
                 }
+                Text("Select the output messages")
+                TextField("Steve/Developer/Project", text: $directory)
+                    .font(.system(size: 12))
+                    .frame(width: 350)
+                    .textFieldStyle(.plain)
+                    .padding(5)
+                    .background(Color(hex: "#767a82"))
+                    .cornerRadius(10)
+                    .padding(.horizontal, 40)
+                
+                Button("Kaydet") {
+                    UserDefaults.standard.set(directory, forKey: "directory")
+                }.padding()
             }.padding()
         }
     }

@@ -6,63 +6,46 @@
 //
 
 import Foundation
+import Alamofire
 
-class OpenAIAPIClient {
-    let apiKey: String
-    let session: URLSession
-    
-    init(apiKey: String) {
-        self.apiKey = apiKey
-        self.session = URLSession(configuration: .default)
-    }
-    
-    func sendMessage(_ message: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let apiKey = "YOUR_API_KEY"
-        let endpoint = "https://api.openai.com/v1/engines/davinci-codex/completions"
-        
-        guard let url = URL(string: endpoint) else {
-            completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Geçersiz URL"])))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let parameters: [String: Any] = [
-            "prompt": message,
-            "max_tokens": 50
+class OpenAiService {
+    private let endpointUrl = "https://api.openai.com/v1/chat/completions"
+
+    func sendMessage(messages: [Message]) async -> OpenAIChatResponse? {
+
+        let openAIMessages = messages.map({ OpenAIChatMessage(role: $0.role, content: $0.content) })
+
+        let body = OpenAIChatBody(model: "gpt-3.5-turbo", messages: openAIMessages)
+
+        let hearders: HTTPHeaders = [
+            "Authorization": "Bearer \(Constants.openAIApiKey)"
         ]
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
-            completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Geçersiz parametreler"])))
-            return
-        }
-        
-        request.httpBody = httpBody
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Veri alınamadı"])))
-                return
-            }
-            
-            if let responseString = String(data: data, encoding: .utf8) {
-                completion(.success(responseString))
-            } else {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Geçersiz yanıt"])))
-            }
-        }
-        
-        task.resume()
-    }
 
+        return try? await AF.request(endpointUrl, method: .post, parameters: body, encoder: .json, headers: hearders).serializingDecodable(OpenAIChatResponse.self).value
+
+    }
 }
 
+struct OpenAIChatBody: Encodable {
+    let model: String
+    let messages: [OpenAIChatMessage]
+}
 
+struct OpenAIChatMessage: Codable {
+    let role: SenderRole
+    let content: String
+}
+
+enum SenderRole: String, Codable {
+    case system
+    case user
+    case assistant
+}
+
+struct OpenAIChatResponse: Decodable {
+    let choices: [OpenAIChatChoice]
+}
+
+struct OpenAIChatChoice: Decodable {
+    let message: OpenAIChatMessage
+}

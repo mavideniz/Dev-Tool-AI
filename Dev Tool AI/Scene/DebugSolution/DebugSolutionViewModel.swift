@@ -14,8 +14,14 @@ class DebugSolutionViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
 
-    func sendMessage() {
-        isLoading = true
+    func sendMessage(prefix: String, output: String) {
+        
+        let initialPrompt = """
+            You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. \(prefix). Give the next answers in \(output).
+            """
+        
+        let systemMessage = Message(id: UUID(), role: .system, content: initialPrompt, createAt: Date())
+        messages.append(systemMessage)
         let newMessage = Message(id: UUID(), role: .user, content: currentInput, createAt: Date())
         messages.append(newMessage)
         currentInput = ""
@@ -40,19 +46,5 @@ class DebugSolutionViewModel: ObservableObject {
                 isLoading = false
             }
         }
-    }
-
-    init() {
-        let initialPrompt = """
-            You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. Put an appropriate prefix like [bug-fix], [feature] at the beginning of the commit message. In Turkish.
-            """
-        // Put an appropriate emoji at the beginning of the commit message.
-        // Put an appropriate prefix like [bug-fix], [feature] at the beginning of the commit message.
-        
-        // In Turkish
-        // In Arabic
-        // In English
-        let systemMessage = Message(id: UUID(), role: .system, content: initialPrompt, createAt: Date())
-        messages.append(systemMessage)
     }
 }

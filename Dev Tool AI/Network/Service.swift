@@ -18,7 +18,7 @@ class OpenAiService {
         let body = OpenAIChatBody(model: "gpt-3.5-turbo", messages: openAIMessages)
 
         let hearders: HTTPHeaders = [
-            "Authorization": "Bearer \(Constants.openAIApiKey)"
+            "Authorization": "Bearer \(AppConstants.openApiKey)"
         ]
 
         return try? await AF.request(endpointUrl, method: .post, parameters: body, encoder: .json, headers: hearders).serializingDecodable(OpenAIChatResponse.self).value

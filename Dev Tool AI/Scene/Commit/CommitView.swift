@@ -14,6 +14,8 @@ struct CommitView: View {
     @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
 
+    @EnvironmentObject var githubStatusManager: GitHubStatusManager
+
     var body: some View {
         ZStack {
             VStack {
@@ -23,6 +25,49 @@ struct CommitView: View {
                 Text("Organize your commit messages")
                     .font(.custom(FontConstants.titleFont, size: 16))
                     .foregroundColor(.white.opacity(0.6))
+
+//                ForEach(0..<self.githubStatusManager.changedFilesNames.count, id: \.self) { index in
+//                    Text("\(githubStatusManager.changedFilesNames[index])")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                }.padding(.horizontal, 10)
+
+            
+                if githubStatusManager.commitSummary != "" {
+                    
+                    Text("AUTOMATIC MESSAGE")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 18))
+                        .foregroundColor(.yellow)
+                        .padding(.horizontal, 10)
+                        .padding(.top, 20)
+                    
+                    HStack {
+                        Text("\(githubStatusManager.commitSummary)")
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.white)
+
+                        Button {
+                            githubStatusManager.sendMessage()
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.blue)
+                                .padding(8)
+                                .background(Color.white)
+                                .cornerRadius(30)
+                        }.buttonStyle(.plain)
+                    }.padding(.top, -5)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                        .background(Color.black)
+                        .cornerRadius(30)
+                        .padding(.horizontal, 10)
+                        
+                }
+
+
                 ScrollView {
                     ScrollViewReader { scrollViewProxy in
                         LazyVStack(spacing: 8) {
@@ -81,7 +126,6 @@ struct CommitView: View {
                             }
                         } else {
                             viewModel.sendMessage()
-                            print(UserDefaults.standard.string(forKey: "output"))
                             withAnimation {
                                 isTextFieldEmpty = false
                                 isLoading = true
@@ -99,45 +143,47 @@ struct CommitView: View {
                             .padding(10)
                             .background(Color(hex: ColorConstants.secondColor))
 
-                                .cornerRadius(8)
-                        }.buttonStyle(PlainButtonStyle())
-                    }.padding(.bottom, 15)
-                        .padding(.horizontal, 15)
-                }
-                    .cornerRadius(16)
-                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
-            }
-        }
-
-        func messageView(message: Message) -> some View {
-            VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 8) {
-                if message.role == .assistant {
-                    Text(message.content)
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .background(Color(hex: ColorConstants.mainColor))
-                        .cornerRadius(8)
-                        .font(.custom(FontConstants.messageFont, size: 16))
-                } else {
-                    Text(message.content)
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .background(Color(hex: ColorConstants.secondColor))
-                        .cornerRadius(8)
-                        .font(.custom(FontConstants.messageFont, size: 16))
-                }
-            }.font(.system(size: 16))
-            .onAppear(){
-                print(UserDefaults.standard.string(forKey: "output"))
-                print(UserDefaults.standard.string(forKey: "prefix"))
+                            .cornerRadius(8)
+                    }.buttonStyle(PlainButtonStyle())
+                }.padding(.bottom, 15)
+                    .padding(.horizontal, 15)
             }
                 .cornerRadius(16)
                 .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
+        }.onAppear {
+            self.githubStatusManager.sendMessage()
         }
     }
 
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            CommitView()
+    func messageView(message: Message) -> some View {
+        VStack(alignment: message.role == .user ? .trailing : .leading, spacing: 8) {
+            if message.role == .assistant {
+                Text(message.content)
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(Color(hex: ColorConstants.mainColor))
+                    .cornerRadius(8)
+                    .font(.custom(FontConstants.messageFont, size: 16))
+            } else {
+                Text(message.content)
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(Color(hex: ColorConstants.secondColor))
+                    .cornerRadius(8)
+                    .font(.custom(FontConstants.messageFont, size: 16))
+            }
+        }.font(.system(size: 16))
+            .onAppear() {
+            print(UserDefaults.standard.string(forKey: "output"))
+            print(UserDefaults.standard.string(forKey: "prefix"))
         }
+            .cornerRadius(16)
+            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
     }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        CommitView()
+    }
+}

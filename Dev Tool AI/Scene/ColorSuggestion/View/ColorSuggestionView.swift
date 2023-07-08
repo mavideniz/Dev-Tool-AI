@@ -19,15 +19,14 @@ struct ColorSuggestionView: View {
         ZStack {
             Color.clear.edgesIgnoringSafeArea(.all)
 
-<<<<<<< Updated upstream
             VStack {
                 Text("🎨 Color Bot")
                     .font(.custom(FontConstants.titleFont, size: 20))
-                
+
                 Text("Generate a new palette")
                     .font(.custom(FontConstants.titleFont, size: 16))
                     .foregroundColor(.white.opacity(0.6))
-=======
+
                 if self.viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -38,9 +37,7 @@ struct ColorSuggestionView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
                 }
->>>>>>> Stashed changes
 
-                    .padding(.bottom)
                 VStack(spacing: 10) {
                     if self.viewModel.isLoading {
                         ProgressView()
@@ -91,12 +88,10 @@ struct ColorSuggestionView: View {
                                     .padding(.bottom, 7)
                                     .background(Color.black.opacity(0.1))
                                     .cornerRadius(15)
-<<<<<<< Updated upstream
                                     .onTapGesture {
                                     shouldShowSuccessView = true
                                     CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
                                 }
-=======
 
                                 Text("\(viewModel.colorResponses[index].name)")
                                     .minimumScaleFactor(0.01)
@@ -114,11 +109,7 @@ struct ColorSuggestionView: View {
                                 .padding(.bottom, 7)
                                 .background(Color.black.opacity(0.1))
                                 .cornerRadius(15)
-                                .onTapGesture {
-                                shouldShowSuccessView = true
-                                CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
->>>>>>> Stashed changes
-                            }
+
                         }.padding(.horizontal, 5)
                     }
 

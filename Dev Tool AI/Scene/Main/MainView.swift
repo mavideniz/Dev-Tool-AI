@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+
+    @StateObject private var githubStatusManager = GitHubStatusManager()
+
     var body: some View {
         TabView {
             ChatAppView()
                 .tabItem {
-                    Label("Chat", systemImage: "list.dash")
+                Label("Chat", systemImage: "list.dash")
             }
             CommitView()
                 .tabItem {
@@ -30,26 +33,8 @@ struct MainView: View {
                 .tabItem {
                 Label("Settings", systemImage: "gear")
             }
-<<<<<<< Updated upstream
+
         }.padding().frame(width: 500, height: 600)
-=======
-        }.padding().frame(width: 400, height: 400)
-            .onAppear {
-            if let files = GitHubStatusManager.shared.getChangedFiles() {
-                for file in files {
-                    print(file)
-                }
-            }
-
-
-        }
->>>>>>> Stashed changes
-
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
+            .environmentObject(githubStatusManager)
     }
 }

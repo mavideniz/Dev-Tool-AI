@@ -20,7 +20,8 @@ class GitHubStatusManager: ObservableObject {
         let pipe = Pipe()
 
         task.launchPath = "/usr/bin/env" // Path to the Git executable
-        task.currentDirectoryPath = "/Users/giray/Documents/GitHub/Dev-Tool-AI" // Path to your Git repository
+        // /Users/giray/Documents/GitHub/Dev-Tool-AI
+        task.currentDirectoryPath = "/Users/mehmetalidemir/Documents/GitHub/Adsız" // Path to your Git repository
 
         task.arguments = ["git", "diff", "--minimal", "HEAD"] // Git command and arguments
 

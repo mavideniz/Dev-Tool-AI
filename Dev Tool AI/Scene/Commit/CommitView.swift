@@ -15,6 +15,7 @@ struct CommitView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @EnvironmentObject var githubStatusManager: GitHubStatusManager
+    @EnvironmentObject var languageManager: LanguageManager
 
     var body: some View {
         ZStack {
@@ -107,7 +108,7 @@ struct CommitView: View {
                                 isTextFieldEmpty = true
                             }
                         } else {
-                            viewModel.sendMessage()
+                            viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
                                 isLoading = true
@@ -125,7 +126,7 @@ struct CommitView: View {
                                 isTextFieldEmpty = true
                             }
                         } else {
-                            viewModel.sendMessage()
+                            viewModel.sendMessage(prefix: languageManager.prefixLanguage, output: languageManager.outputLanguage)
                             withAnimation {
                                 isTextFieldEmpty = false
                                 isLoading = true

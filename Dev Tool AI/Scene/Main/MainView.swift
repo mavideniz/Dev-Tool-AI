@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
 
     @StateObject private var githubStatusManager = GitHubStatusManager()
+    @StateObject private var languageManager = LanguageManager()
 
     var body: some View {
         TabView {
@@ -36,5 +37,6 @@ struct MainView: View {
 
         }.padding().frame(width: 500, height: 600)
             .environmentObject(githubStatusManager)
+            .environmentObject(languageManager)
     }
 }

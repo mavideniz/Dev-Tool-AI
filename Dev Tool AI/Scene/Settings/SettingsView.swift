@@ -17,7 +17,14 @@ struct SettingsView: View {
     var body: some View {
         ZStack {
             VStack {
+                Text("⚙️ Settings")
+                    .font(.custom(FontConstants.titleFont, size: 20))
+                    .padding(.top)
+                Text("Configure your settings")
+                    .font(.custom(FontConstants.titleFont, size: 16))
+                    .foregroundColor(.white.opacity(0.6))
                 Text("Select the commit messages prefix")
+                    .padding(.top, 16)
                 Picker("", selection: $selectedPrefix) {
                     Text("Emoji").tag(0)
                     Text("Text").tag(1)
@@ -50,6 +57,7 @@ struct SettingsView: View {
                     }
                 }
                 Text("Select the output messages")
+                    .padding(.top, 16)
                 Picker("", selection: $selectedOutput) {
                     ForEach(lang, id: \.self) {
                         Text($0)
@@ -60,7 +68,10 @@ struct SettingsView: View {
                     print(UserDefaults.standard.string(forKey: "output"))
                 }
                 Text("Select the output messages")
-                TextField("Steve/Developer/Project", text: $directory)
+                    .padding(.top, 16)
+                TextField("Steve/Developer/Project", text: $directory, onCommit: {
+                    UserDefaults.standard.set(directory, forKey: "directory")
+                })
                     .font(.system(size: 12))
                     .frame(width: 350)
                     .textFieldStyle(.plain)
@@ -69,9 +80,7 @@ struct SettingsView: View {
                     .cornerRadius(10)
                     .padding(.horizontal, 40)
                 
-                Button("Kaydet") {
-                    UserDefaults.standard.set(directory, forKey: "directory")
-                }.padding()
+                Spacer()
             }.padding()
         }
     }

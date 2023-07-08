@@ -30,17 +30,10 @@ struct AutoCommitView: View {
                         HStack {
                             VStack(alignment: .center, spacing: 10) {
                                 if githubStatusManager.commitSummary != "" {
-                                    Text("Auto Commit")
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                        .font(.custom(FontConstants.titleFont, size: 25))
-                                        .foregroundColor(.black)
-                                        .padding(.top, 20)
-
                                     HStack {
                                         Text("\(githubStatusManager.commitSummary)")
                                             .multilineTextAlignment(.leading)
                                             .foregroundColor(.white)
-
                                         Button {
                                             githubStatusManager.sendMessage()
                                         } label: {
@@ -56,7 +49,7 @@ struct AutoCommitView: View {
                                     }.padding(.top, -5)
                                         .frame(maxWidth: .infinity)
                                         .padding()
-                                        .background(Color.black)
+                                        .background(Color(hex: ColorConstants.secondColor))
                                         .cornerRadius(30)
                                         .padding(.horizontal, 10)
                                 }

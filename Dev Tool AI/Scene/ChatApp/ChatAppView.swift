@@ -13,7 +13,6 @@ struct ChatAppView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var languageManager: LanguageManager
 
-
     var body: some View {
         ZStack {
             VStack {

@@ -25,7 +25,7 @@ struct CommitView: View {
             VStack {
                 Toggle(isOn: $isToggleOn) {
                 }
-                    .toggleStyle(SymbolToggleStyle(systemImage: "hand.raised.fill", activeColor: .black))
+                .toggleStyle(SymbolToggleStyle(systemImage: "hand.raised.fill", activeColor: Color(hex: ColorConstants.mainColor) ?? .gray))
                     .padding()
                 Spacer()
             }

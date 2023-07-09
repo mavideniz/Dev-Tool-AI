@@ -80,10 +80,13 @@ class GitHubStatusManager: ObservableObject {
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
-            Analyze the code at the end of the sentence and provide me with the short commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. \(prefix). Here's the code:
+            Analyze the code at the end of the sentence and provide me a short commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. Don't use more than 300 characters in your response. \(prefix). Here's the code:
             \(self.findChangedFilesDecription())
             """, createAt: Date())
-
+        
+        
+        print("---newMessage\(newMessage.content)")
+        
         Task {
             let response = await openAIService.sendMessage(messages: [newMessage])
             guard let receivedOpenAIMessage = response?.choices.first?.message else {

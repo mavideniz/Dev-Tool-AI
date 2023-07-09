@@ -80,7 +80,9 @@ class GitHubStatusManager: ObservableObject {
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
-                        You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. \(prefix). Give the next answers in \(language) Here's the code:
+                        You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. \(prefix). Give your answer in maximum 300 characters and keep it brief and short. Give the answers language is \(language) Here's the code:
+
+
             \(self.findChangedFilesDecription())
             """, createAt: Date())
         

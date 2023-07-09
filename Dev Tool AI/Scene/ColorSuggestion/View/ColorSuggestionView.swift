@@ -98,7 +98,7 @@ struct ColorSuggestionView: View {
 
                                     Text("\(viewModel.colorResponses[index].fontName)")
                                         .foregroundColor(.white).opacity(0.8)
-                                        .font(.custom(FontConstants.messageFont, size: 12))
+                                        .font(.custom(FontConstants.messageFont, size: 14))
                                         .multilineTextAlignment(.center)
                                         .frame(height: 30)
                                         .minimumScaleFactor(0.01)

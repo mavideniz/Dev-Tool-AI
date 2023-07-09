@@ -35,7 +35,8 @@ struct MainView: View {
                 Label("Settings", systemImage: "gear")
             }
 
-        }.padding().frame(width: 500, height: 600)
+        }.padding()
+            .frame(width: 500, height: 600)
             .environmentObject(githubStatusManager)
             .environmentObject(languageManager)
     }

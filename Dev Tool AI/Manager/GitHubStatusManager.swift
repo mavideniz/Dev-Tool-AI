@@ -60,6 +60,7 @@ class GitHubStatusManager: ObservableObject {
 
         if task.terminationStatus == 0, let fileNames = output?.components(separatedBy: .newlines) {
             self.changedFiles = fileNames
+            self.changedFiles.removeLast()
         }
     }
 

@@ -20,10 +20,10 @@ struct SuccessMessagePopUpView: View {
             .foregroundColor(.white)
             .padding()
             .padding(.horizontal, 10)
-            .background(Color(hex: ColorConstants.thirdColor))
+            .background(Color(hex: ColorConstants.thirdColor)?.opacity(0.7))
             .cornerRadius(30)
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.top, 15)
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, 10)
             .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     self.shouldShow = false

@@ -28,7 +28,7 @@ struct CommitView: View {
                 .toggleStyle(SymbolToggleStyle(systemImage: "hand.raised.fill", activeColor: Color(hex: ColorConstants.mainColor) ?? .gray))
                     .padding()
                 Spacer()
-            }
+            }.padding(.trailing, 10)
         }
     }
 }

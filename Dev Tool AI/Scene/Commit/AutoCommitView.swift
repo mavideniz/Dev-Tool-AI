@@ -30,7 +30,7 @@ struct AutoCommitView: View {
                     } else {
                         VStack(alignment: .center, spacing: 10) {
 
-                            VStack(spacing: 5) {
+                            VStack(alignment: .leading, spacing: 5) {
                                 ForEach(0..<githubStatusManager.changedFiles.count, id: \.self) { index in
                                     Text(githubStatusManager.changedFiles[index])
                                         .foregroundColor(.white)
@@ -43,7 +43,7 @@ struct AutoCommitView: View {
                                         .multilineTextAlignment(.leading)
                                         .foregroundColor(.white)
                                     Button {
-                                        githubStatusManager.sendMessage(language: languageManager.outputLanguage)
+                                        githubStatusManager.sendMessage(language: languageManager.outputLanguage, prefix: languageManager.prefixLanguage)
                                     } label: {
                                         Image(systemName: "arrow.clockwise")
                                             .resizable()
@@ -64,7 +64,7 @@ struct AutoCommitView: View {
 
                             if githubStatusManager.commitSummary == "" {
                                 Button {
-                                    self.githubStatusManager.sendMessage(language: languageManager.outputLanguage)
+                                    self.githubStatusManager.sendMessage(language: languageManager.outputLanguage, prefix: languageManager.prefixLanguage)
                                 } label: {
                                     HStack() {
                                         Text("Generate")

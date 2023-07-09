@@ -46,7 +46,7 @@ class GitHubStatusManager: ObservableObject {
         let pipe = Pipe()
 
         task.launchPath = "/usr/bin/env" // Path to the Git executable
-        task.currentDirectoryPath = "/Users/giray/Documents/GitHub/Dev-Tool-AI" // Path to your Git repository
+        task.currentDirectoryPath = directory // Path to your Git repository
 
         task.arguments = ["git", "diff", "--name-only", "HEAD"] // Git command and arguments
 
@@ -77,12 +77,12 @@ class GitHubStatusManager: ObservableObject {
         return longString
     }
 
-    func sendMessage(language: String) {
+    func sendMessage(language: String, prefix: String) {
         self.isLoading = true
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
-            Please analyze the following code and provide me with the commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. Describe in maximum 300 characters. Here's the code:
+            Analyze the code at the end of the sentence and provide me with the short commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. \(prefix). Here's the code:
             \(self.findChangedFilesDecription())
             """, createAt: Date())
 

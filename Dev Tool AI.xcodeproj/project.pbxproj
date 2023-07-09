@@ -32,7 +32,7 @@
 		C227BA2E2A595C990051443C /* Color+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA2D2A595C990051443C /* Color+HexColor.swift */; };
 		C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA302A595E6E0051443C /* CopyClipboardManager.swift */; };
 		C227BA332A595F5F0051443C /* SuccessMessagePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */; };
-		C227BA362A597CB90051443C /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA352A597CB90051443C /* ColorModel.swift */; };
+		C227BA362A597CB90051443C /* DesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA352A597CB90051443C /* DesignModel.swift */; };
 		C227BA382A59AA3D0051443C /* GitHubStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C227BA372A59AA3C0051443C /* GitHubStatusManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 		C227BA2D2A595C990051443C /* Color+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexColor.swift"; sourceTree = "<group>"; };
 		C227BA302A595E6E0051443C /* CopyClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyClipboardManager.swift; sourceTree = "<group>"; };
 		C227BA322A595F5F0051443C /* SuccessMessagePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessMessagePopUpView.swift; sourceTree = "<group>"; };
-		C227BA352A597CB90051443C /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
+		C227BA352A597CB90051443C /* DesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignModel.swift; sourceTree = "<group>"; };
 		C227BA372A59AA3C0051443C /* GitHubStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubStatusManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,7 +260,7 @@
 		C227BA342A597CA80051443C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C227BA352A597CB90051443C /* ColorModel.swift */,
+				C227BA352A597CB90051443C /* DesignModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,7 +364,7 @@
 				66BFE6532A59456F0052958F /* CustomButton.swift in Sources */,
 				C227BA312A595E6E0051443C /* CopyClipboardManager.swift in Sources */,
 				66BFE6662A595BFB0052958F /* Constants.swift in Sources */,
-				C227BA362A597CB90051443C /* ColorModel.swift in Sources */,
+				C227BA362A597CB90051443C /* DesignModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

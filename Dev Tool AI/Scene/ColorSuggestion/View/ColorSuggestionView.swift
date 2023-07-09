@@ -96,7 +96,7 @@ struct ColorSuggestionView: View {
                                 .background(Color.black.opacity(0.1))
                                 .cornerRadius(15)
 
-                        }.padding(.horizontal, 5)
+                        }.padding(.horizontal, 40)
                     }
 
                     Button {

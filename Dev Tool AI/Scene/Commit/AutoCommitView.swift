@@ -57,6 +57,8 @@ struct AutoCommitView: View {
                                         .background(Color.white)
                                         .cornerRadius(30)
                                 }.buttonStyle(.plain)
+                                
+                                // Buraya networking işi yapılcak
 
                                 Button {
                                     self.didTapEditButton.toggle()

@@ -14,6 +14,7 @@ struct ColorSuggestionView: View {
     @State private var shouldShowSuccessView: Bool = false
     @State private var searchResultKeyword: String = ""
     @State private var keywordText: String = ""
+    @State private var isFont: Bool = false
 
     var body: some View {
         ZStack {
@@ -75,12 +76,22 @@ struct ColorSuggestionView: View {
                                         .font(.system(size: 13, weight: .bold))
                                         .multilineTextAlignment(.center)
                                         .padding(.top, 7)
+                                        .onTapGesture {
+                                        isFont = false
+                                        shouldShowSuccessView = true
+                                        CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
+                                    }
 
                                     Text("\(viewModel.colorResponses[index].hexColor)")
                                         .foregroundColor(.white).opacity(0.7)
                                         .font(.system(size: 12))
                                         .multilineTextAlignment(.center)
-
+                                        .onTapGesture {
+                                        isFont = false
+                                        shouldShowSuccessView = true
+                                        CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
+                                    }
+                                    
                                     Spacer()
 
                                     Divider()
@@ -91,16 +102,18 @@ struct ColorSuggestionView: View {
                                         .multilineTextAlignment(.center)
                                         .frame(height: 30)
                                         .minimumScaleFactor(0.01)
+                                        .onTapGesture {
+                                        isFont = true
+                                        shouldShowSuccessView = true
+                                        CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].fontName)")
+                                    }
 
                                 }.frame(height: 200)
                                     .padding(5)
                                     .padding(.bottom, 7)
                                     .background(Color.black.opacity(0.1))
                                     .cornerRadius(15)
-                                    .onTapGesture {
-                                    shouldShowSuccessView = true
-                                    CopyClipboardManager.shared.copyToClipboard(string: "\(viewModel.colorResponses[index].hexColor)")
-                                }
+
                             }.frame(height: 220)
                         }.padding(.horizontal, 10)
                     }
@@ -127,11 +140,10 @@ struct ColorSuggestionView: View {
                         .padding(.top, 8)
                 }
 
-
             }
 
             if shouldShowSuccessView {
-                SuccessMessagePopUpView(shouldShow: $shouldShowSuccessView, text: "Hex color copied!")
+                SuccessMessagePopUpView(shouldShow: $shouldShowSuccessView, text: isFont ? "Font name copied" : "Hex color copied!")
             }
         }
     }

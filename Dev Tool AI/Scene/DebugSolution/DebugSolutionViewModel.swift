@@ -17,7 +17,7 @@ class DebugSolutionViewModel: ObservableObject {
     func sendMessage(prefix: String, output: String) {
         
         let initialPrompt = """
-            You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. \(prefix). Give the next answers in \(output).
+            I encountered such an error while writing the code, what could be the solution? Help like a senior developer, \(output).
             """
         
         let systemMessage = Message(id: UUID(), role: .system, content: initialPrompt, createAt: Date())

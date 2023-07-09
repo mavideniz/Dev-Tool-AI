@@ -41,7 +41,7 @@ class GitHubStatusManager: ObservableObject {
         }
     }
 
-    func getChangedFiles() -> [String]? {
+    func getChangedFiles() {
         let task = Process()
         let pipe = Pipe()
 
@@ -60,9 +60,6 @@ class GitHubStatusManager: ObservableObject {
 
         if task.terminationStatus == 0, let fileNames = output?.components(separatedBy: .newlines) {
             self.changedFiles = fileNames
-            return fileNames
-        } else {
-            return nil
         }
     }
 

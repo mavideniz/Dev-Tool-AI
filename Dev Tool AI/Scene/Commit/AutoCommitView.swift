@@ -31,11 +31,10 @@ struct AutoCommitView: View {
                     if githubStatusManager.commitSummary != "" {
                         HStack {
                             if didTapEditButton {
-                                TextField("", text: $githubStatusManager.commitSummary)
+                                TextField("", text: $githubStatusManager.commitSummary, axis: .vertical)
                                     .textFieldStyle(.plain)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
-                                    .frame(maxWidth: 350, maxHeight: .infinity)
                             } else {
                                 Text("\(githubStatusManager.commitSummary)")
                                     .multilineTextAlignment(.leading)

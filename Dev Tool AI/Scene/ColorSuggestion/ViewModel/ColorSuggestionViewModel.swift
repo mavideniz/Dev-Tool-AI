@@ -13,7 +13,7 @@ final class ColorSuggestionViewModel: ObservableObject {
 
     @Published var keyword: String = ""
 
-    @Published var colorResponses: [ColorModel] = []
+    @Published var colorResponses: [DesignModel] = []
 
     @Published var isLoading: Bool = false
     @Published var shouldShowError: Bool = false
@@ -26,7 +26,7 @@ final class ColorSuggestionViewModel: ObservableObject {
         keyword = ""
 
         Task {
-            let response = await openAIService.sendMessage(messages: messages)
+            let response = await self.openAIService.sendMessage(messages: self.messages)
 
             guard let receivedOpenAIMessage = response?.choices.first?.message else {
                 print("Had no received message")
@@ -45,15 +45,18 @@ final class ColorSuggestionViewModel: ObservableObject {
                 messages.removeAll { element in
                     element == "-"
                 }
-                
+
                 let dividedMessages = messages.split(separator: "\n")
 
                 for colorModels in dividedMessages {
                     let dividedColors = colorModels.split(separator: ",")
                     let name = String(dividedColors[0])
-                    if dividedColors.count > 1 {
-                        let hexColor = String(dividedColors[1])
-                        let colorModel = ColorModel(name: name, hexColor: hexColor)
+                    if dividedColors.count > 2 {
+                        var hexColor = String(dividedColors[2])
+                        hexColor = hexColor.trimmingCharacters(in: .whitespaces)
+                        print(hexColor)
+                        let fontName = String(dividedColors[1])
+                        let colorModel = DesignModel(name: name, hexColor: hexColor, fontName: fontName)
                         self.colorResponses.append(colorModel)
                     } else {
                         self.shouldShowError = true
@@ -66,9 +69,13 @@ final class ColorSuggestionViewModel: ObservableObject {
     }
 
     init() {
+//        let initialPrompt = """
+//            I will give a keyword and I want you to find me the related 4 different colors and give those colors in the following format. Make colors bullet list and give color name and then put , (comma) and write hex code of the color. Only give list as your answer, don't write anything else. ONLY THE COLORS. My keyword is
+//            """
+
         let initialPrompt = """
-            I will give a keyword and I want you to find me the related 4 different colors and give those colors in the following format. Make colors bullet list and give color name and then put , (comma) and write hex code of the color. Only give list as your answer, don't write anything else. ONLY THE COLORS. My keyword is
-            """
+I will give a keyword and I want you to find me the related 4 different colors and fonts, give those in the following format; put - (dash) at the start of the line, write color name and then put , (comma) and write font name and put , (comma) and write hex code of the color in the same line and then move to the next line. Only give list as your answer, don't write anything else. My keyword is
+"""
         // Put an appropriate emoji at the beginning of the commit message.
         // Put an appropriate prefix like [bug-fix], [feature] at the beginning of the commit message.
 

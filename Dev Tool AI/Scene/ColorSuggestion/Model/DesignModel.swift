@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ColorModel {
+struct DesignModel {
     let name: String
     let hexColor: String
+    let fontName: String
 }

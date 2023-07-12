@@ -31,11 +31,10 @@ struct AutoCommitView: View {
                     if githubStatusManager.commitSummary != "" {
                         HStack {
                             if didTapEditButton {
-                                TextField("", text: $githubStatusManager.commitSummary)
+                                TextField("", text: $githubStatusManager.commitSummary, axis: .vertical)
                                     .textFieldStyle(.plain)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
-                                    .frame(maxWidth: 350, maxHeight: .infinity)
                             } else {
                                 Text("\(githubStatusManager.commitSummary)")
                                     .multilineTextAlignment(.leading)
@@ -80,24 +79,26 @@ struct AutoCommitView: View {
                     }
 
                     if githubStatusManager.commitSummary == "" && !githubStatusManager.isLoading {
-                        Button {
-                            self.githubStatusManager.sendMessage(language: languageManager.outputLanguage, prefix: languageManager.prefixLanguage)
-                        } label: {
-                            HStack() {
-                                Text("Commit Generate")
-                                    .font(.custom(FontConstants.messageFont, size: 16))
-                                    .foregroundColor(.white)
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.white)
-                                    .scaledToFit()
-                            }.frame(width: 150)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 15)
-                                .background(Color(hex: ColorConstants.secondColor))
-                                .cornerRadius(15)
-                        }.buttonStyle(.plain)
-                            .frame(maxHeight: .infinity, alignment: .center)
-
+                        if !githubStatusManager.changedFiles.isEmpty {
+                            Button {
+                                self.githubStatusManager.sendMessage(language: languageManager.outputLanguage, prefix: languageManager.prefixLanguage)
+                            } label: {
+                                HStack() {
+                                    
+                                    Text("Commit Generate")
+                                        .font(.custom(FontConstants.messageFont, size: 16))
+                                        .foregroundColor(.white)
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.white)
+                                        .scaledToFit()
+                                }.frame(width: 150)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 15)
+                                    .background(Color(hex: ColorConstants.secondColor))
+                                    .cornerRadius(15)
+                            }.buttonStyle(.plain)
+                                .frame(maxHeight: .infinity, alignment: .center)
+                        }
                     }
                     else {
                         if !githubStatusManager.isLoading {
@@ -129,10 +130,16 @@ struct AutoCommitView: View {
                                     .font(.custom(FontConstants.messageFont, size: 16))
                                     .padding(.bottom, 15)
 
-                                ForEach(0..<githubStatusManager.changedFiles.count, id: \.self) { index in
-                                    Text("- \(githubStatusManager.changedFiles[index])")
-                                        .foregroundColor(.white.opacity(0.8))
-                                        .font(.custom(FontConstants.messageFont, size: 15))
+                                if githubStatusManager.changedFiles.isEmpty {
+                                    Text("No changes")
+                                        .font(.custom(FontConstants.messageFont, size: 12))
+
+                                } else {
+                                    ForEach(0..<githubStatusManager.changedFiles.count, id: \.self) { index in
+                                        Text("- \(githubStatusManager.changedFiles[index])")
+                                            .foregroundColor(.white.opacity(0.8))
+                                            .font(.custom(FontConstants.messageFont, size: 15))
+                                    }
                                 }
                             }.padding()
                                 .background(Color.init(hex: ColorConstants.mainColor)?.opacity(0.7))

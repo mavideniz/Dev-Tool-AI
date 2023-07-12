@@ -80,10 +80,15 @@ class GitHubStatusManager: ObservableObject {
         self.commitSummary.removeAll()
 
         let newMessage = Message(id: UUID(), role: .user, content: """
-            Analyze the code at the end of the sentence and provide me with the short commit message. Omit any descriptions or comments related to the code with bullet points. Translate to \(language) language. \(prefix). Here's the code:
+                        You are a developer working on a project and you need to create a clear and concise commit message for a new code change you made. Write a commit message that effectively communicates the purpose of your code change. Remember to follow best practices for writing commit messages, including providing a brief summary and, if necessary, additional details about the changes made. \(prefix). Give your answer in maximum 300 characters and keep it brief and short. Give the answers language is \(language) Here's the code:
+
+
             \(self.findChangedFilesDecription())
             """, createAt: Date())
-
+        
+        
+        print("---newMessage\(newMessage.content)")
+        
         Task {
             let response = await openAIService.sendMessage(messages: [newMessage])
             guard let receivedOpenAIMessage = response?.choices.first?.message else {

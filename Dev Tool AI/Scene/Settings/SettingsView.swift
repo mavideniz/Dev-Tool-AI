@@ -13,20 +13,38 @@ struct SettingsView: View {
     var lang = ["🇬🇧 English", "🇹🇷 Turkish", "🇪🇸Spanish", "🇸🇦 Arabic"]
 
     @AppStorage("directory") var directory: String = ""
+    @AppStorage("apiKey") var apiKey: String = ""
+
 
     var body: some View {
-        ZStack {
+        VStack {
             VStack {
                 Text("⚙️ Settings")
                     .font(.custom(FontConstants.titleFont, size: 20))
-                
                 Text("Configure your settings")
                     .font(.custom(FontConstants.titleFont, size: 16))
                     .foregroundColor(.white.opacity(0.6))
-            }.frame(maxHeight: .infinity, alignment: .top)
-                .padding(.top, 15)
-            
+            }
+
             VStack {
+                Text("⚠️ Please enter your API KEY Before Using the Application!")
+                    .font(.custom(FontConstants.titleFont, size: 15))
+                    .multilineTextAlignment(.center)
+                HStack {
+
+                    Text("API Key:")
+                        .font(.custom(FontConstants.messageFont, size: 16))
+
+                    TextField("Enter your API key", text: $apiKey)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                    .padding(.top, 16)
+                Button(action: {
+                    saveAPIKey()
+                }) {
+                    Text("Save")
+                        .cornerRadius(10)
+                }
                 VStack(alignment: .leading) {
                     Text("Select the commit messages prefix:")
                         .padding(.top, 16)
@@ -85,15 +103,16 @@ struct SettingsView: View {
                             UserDefaults.standard.set(directory, forKey: "directory")
                         })
                             .font(.system(size: 12))
-                            .textFieldStyle(.plain)
                             .padding(5)
-                            .background(Color(hex: "#767a82"))
                             .cornerRadius(10)
                         Spacer()
-                    }.padding(.vertical, 16)
+                    }
                 }
             }.padding()
         }
+    }
+    func saveAPIKey() {
+        UserDefaults.standard.set(apiKey, forKey: "apiKey")
     }
 }
 

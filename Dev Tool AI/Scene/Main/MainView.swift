@@ -14,6 +14,10 @@ struct MainView: View {
 
     var body: some View {
         TabView {
+            SettingsView()
+                .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
             ChatAppView()
                 .tabItem {
                 Label("Chat", systemImage: "list.dash")
@@ -30,10 +34,7 @@ struct MainView: View {
                 .tabItem {
                 Label("Color", systemImage: "square.and.pencil")
             }
-            SettingsView()
-                .tabItem {
-                Label("Settings", systemImage: "gear")
-            }
+            
 
         }.padding()
             .frame(width: 500, height: 600)

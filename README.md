@@ -27,8 +27,6 @@ To use this application, you need to have an OpenAI API key. You can obtain one 
 ## 🛠️Installation
 
 - Clone this project: https://github.com/mavideniz/Dev-Tool-AI.git
-- Open the terminal and navigate to the project directory: cd Dev-Tool-AI
-- Install the required pods: pod install
 - Open the Dev-Tool-AI App.xcworkspace file in Xcode.
 - Press Command + R to run the application.
 - Enter your API Key.
